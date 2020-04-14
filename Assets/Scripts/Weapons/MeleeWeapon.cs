@@ -4,23 +4,46 @@ using UnityEngine;
 
 public class MeleeWeapon : Weapon
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+    [SerializeField] Collider WeaponCollider = null;
+
+    private float timer = 0;
+
+
+    private void Update()
     {
-        
+        if (timer < AttackSpeed)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    override public void OnAttack()
     {
-        
+        if (timer >= AttackSpeed + AttackDelay)
+        {
+            timer = 0;
+
+            WeaponCollider.enabled = true;
+
+            StartCoroutine("Attacking");
+
+        }
+    }
+
+    IEnumerable Attaking()
+    {
+        yield return new WaitForSeconds(AttackSpeed - 0.5f);
+        WeaponCollider.enabled = false;
+        StopCoroutine("Attacking");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == TargetTag )
+        if(collision.gameObject.tag != OwnerTag )
         {
-
+            //collision.gameObject.GetComponent<Damageable>().ApplyDamage(Damage);
         }
     }
 }
