@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
 	[SerializeField] [Range(0, 1)] float m_acceleration = 1.0f;
 
-	//[SerializeField] [Range(0, 2)] float m_accelerationTime = 1.0f;
 	[SerializeField] [Range(0, 1)] float m_airControl = 0.5f;
 	[SerializeField] [Range(0, 1)] float m_groundDrag = 0.8f;
 	[SerializeField] [Range(0, 1)] float m_landingDragMultiplier = 1.0f;
@@ -20,14 +19,10 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] [Range(0, 30)] int m_numOfJumpFrames = 10;
 
 
-	[SerializeField] Transform m_cameraTransform = null;
-
-
 	[SerializeField] Transform m_groundStart = null;
 	[SerializeField] Transform m_groundEnd = null;
 	[SerializeField] LayerMask m_groundLayer = 0;
 
-	//[SerializeField] AudioSource m_footstep = null;
 
 	Animator m_animator = null;
 	Rigidbody m_rb = null;
@@ -36,8 +31,6 @@ public class PlayerController : MonoBehaviour
 	int m_landingDragCounter = 0;
 	Vector3 m_storedVelocity = Vector3.zero;
 
-
-	//float m_accelerationTimer = 0.0f;
 
 	bool m_wasAirborne = false;
 
@@ -55,8 +48,6 @@ public class PlayerController : MonoBehaviour
 		bool onGround = Physics.Raycast(m_groundStart.position, direction, out RaycastHit hit, direction.magnitude, m_groundLayer);
 
 
-
-
 		m_animator.SetBool("OnGround", onGround);
 
 
@@ -64,27 +55,16 @@ public class PlayerController : MonoBehaviour
 		{
 			m_animator.SetBool("Jump", false);
 			m_jumpFrameCounter = 0;
-			//if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("Falling Idle"))
-			//{
-			//	m_animator.SetTrigger("Land");
-
-			//	//Debug.Log("Setting Land");
-			//}
 
 			Vector3 torque = new Vector3(0, 1, 0);
-			//torque.y = Input.GetAxis("Horizontal");
 
 			Vector3 velocity = Vector3.zero;
-			//velocity.z = Input.GetAxis("Vertical");
 			velocity.x = Input.GetAxis("Horizontal");
 
-			Vector3 cameraRotation = m_cameraTransform.rotation.eulerAngles;
-			velocity = Quaternion.AngleAxis(cameraRotation.y, Vector3.up) * velocity;
 
 			float animSpeed = m_rb.velocity.magnitude / m_speed;
 			m_animator.SetFloat("Speed", animSpeed);
 
-			//torque = Quaternion.AngleAxis(cameraRotation.y, Vector3.up) * torque;
 
 			if (m_wasAirborne)
 			{
@@ -114,7 +94,6 @@ public class PlayerController : MonoBehaviour
 			}
 
 			m_rb.AddForce(velocity * speedMultiplier * (m_groundDrag * landingMultiplier), ForceMode.VelocityChange);
-			//m_rb.AddForce(velocity * m_speed * (m_groundDrag * landingMultiplier), ForceMode.Acceleration);
 
 			transform.rotation = velocity != Vector3.zero ? Quaternion.LookRotation(velocity) : transform.rotation;//velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
 
@@ -132,11 +111,7 @@ public class PlayerController : MonoBehaviour
 		{
 			m_wasAirborne = true;
 			Vector3 velocity = Vector3.zero;
-			//velocity.z = Input.GetAxis("Vertical");
 			velocity.x = Input.GetAxis("Horizontal");
-
-			Vector3 cameraRotation = m_cameraTransform.rotation.eulerAngles;
-			velocity = Quaternion.AngleAxis(cameraRotation.y, Vector3.up) * velocity;
 
 			m_rb.AddForce(velocity * m_speed * m_airControl, ForceMode.VelocityChange);
 			Vector3 clamped = new Vector3(m_rb.velocity.x, 0, m_rb.velocity.z);
@@ -144,7 +119,6 @@ public class PlayerController : MonoBehaviour
 			clamped.y = m_rb.velocity.y;
 			m_rb.velocity = clamped;
 
-			//m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_speed);
 
 			if (m_rb.velocity.y < 0.2f)
 			{
