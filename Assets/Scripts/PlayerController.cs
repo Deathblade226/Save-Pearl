@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
 		if (onGround)
 		{
 			m_animator.SetBool("Jump", false);
+			m_animator.SetBool("Fall", false);
+
 			m_jumpFrameCounter = 0;
 
 			Vector3 torque = new Vector3(0, 1, 0);
@@ -127,9 +129,10 @@ public class PlayerController : MonoBehaviour
 				m_rb.velocity = v;
 			}
 
-			if (m_rb.velocity.y < -0.1f && m_animator.GetCurrentAnimatorStateInfo(0).IsName("Falling Idle") == false)
+			if (m_rb.velocity.y < 0.0f && m_animator.GetCurrentAnimatorStateInfo(0).IsName("Falling Idle") == false)
 			{
-				m_animator.SetTrigger("Fall");
+				m_animator.SetBool("Fall", true);
+				Debug.Log("fall");
 			}
 
 			if (Input.GetButton("Jump") && m_jumpFrameCounter < m_numOfJumpFrames)
