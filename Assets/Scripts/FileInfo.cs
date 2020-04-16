@@ -5,15 +5,30 @@ using UnityEngine;
 [System.Serializable]
 public class FileInfo
 {
-    public string[] names;
-
-    public FileInfo(string[] names)
+    private string[] names;
+    public string[] Names
     {
-        this.names = names;
+        get { return names; }
+        set { names = value; }
+    }
+
+    private int[] difficulties;
+
+    public int[] Difficulties
+    {
+        get { return difficulties; }
+        set { difficulties = value; }
+    }    
+
+    public FileInfo(string[] names, int[] difficulties)
+    {
+        Names = names;
+        Difficulties = difficulties;
     }
 
     public FileInfo()
     {
-        names = new string[3] { "New File", "New File", "New File" };
+        Difficulties = new int[3] { -1,-1,-1 };
+        Names = new string[3] { "New File", "New File", "New File" };
     }
 }
