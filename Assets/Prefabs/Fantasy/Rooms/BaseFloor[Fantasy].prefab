@@ -2541,12 +2541,17 @@ PrefabInstance:
     - target: {fileID: 8360590843459262980, guid: 7046ad23dd2115f4ba03a8bbf9ae7054,
         type: 3}
       propertyPath: m_jumpForce
-      value: 2.5
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8360590843459262980, guid: 7046ad23dd2115f4ba03a8bbf9ae7054,
         type: 3}
       propertyPath: m_speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360590843459262980, guid: 7046ad23dd2115f4ba03a8bbf9ae7054,
+        type: 3}
+      propertyPath: m_numOfJumpFrames
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8360590843459262983, guid: 7046ad23dd2115f4ba03a8bbf9ae7054,
         type: 3}
