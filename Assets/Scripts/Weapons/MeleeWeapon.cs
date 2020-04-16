@@ -43,7 +43,7 @@ public class MeleeWeapon : Weapon
     {
         if(collision.gameObject.tag != OwnerTag )
         {
-            collision.gameObject.GetComponent<Damageable>().ApplyDamage(Damage);
+            collision.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
         }
     }
 }
