@@ -357,7 +357,7 @@ MonoBehaviour:
     DungeonFlow: {fileID: 11400000, guid: 18e49d346b40d4f40a89bc64e67d2030, type: 2}
     fileVersion: 1
   GenerateOnStart: 1
-  Root: {fileID: 0}
+  Root: {fileID: 954440974}
 --- !u!4 &954440976
 Transform:
   m_ObjectHideFlags: 0
