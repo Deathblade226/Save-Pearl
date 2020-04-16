@@ -11,6 +11,7 @@ public class TitleScreenUI : MonoBehaviour
     [SerializeField] Canvas OverwritePopup = null;
     [SerializeField] Canvas ProfilePopup = null;
     [SerializeField] GameObject[] outputs = new GameObject[3];
+    [SerializeField] GameObject[] buttons = new GameObject[3];
 
     public FileInfo FileInfo { get; set; }
 
@@ -37,6 +38,26 @@ public class TitleScreenUI : MonoBehaviour
         set
         {
             difficulty = value;
+            switch (value)
+            {
+                case 0:
+                    buttons[0].GetComponent<Image>().color = Color.green;
+                    buttons[1].GetComponent<Image>().color = Color.white;
+                    buttons[2].GetComponent<Image>().color = Color.white;
+                    break;
+                case 1:
+                    buttons[0].GetComponent<Image>().color = Color.white;
+                    buttons[1].GetComponent<Image>().color = Color.blue;
+                    buttons[2].GetComponent<Image>().color = Color.white;
+                    break;
+                case 2:
+                    buttons[0].GetComponent<Image>().color = Color.white;
+                    buttons[1].GetComponent<Image>().color = Color.white;
+                    buttons[2].GetComponent<Image>().color = Color.red;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
