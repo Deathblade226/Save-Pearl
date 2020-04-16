@@ -24,7 +24,7 @@ void Update() {
 	if (player != null) { 
 	Attacking = ((transform.position - player.transform.position).magnitude <= attackRange && AttackTime <= 0);
 	//Debug.Log($"Attacking: {Attacking}");
-	if (Attacking) { animator.SetTrigger("Attack"); AttackTime = attackCD; m_navAgent.isStopped = true; }
+	if (Attacking) { animator.SetTrigger("Attack");  AttackTime = attackCD; m_navAgent.isStopped = true; }
 	else if ((transform.position - player.transform.position).magnitude <= attackRange) { m_navAgent.isStopped = true; }
 	else { m_navAgent.SetDestination(player.transform.position); m_navAgent.isStopped = false; }
 	
@@ -34,8 +34,8 @@ void Update() {
 	MoveTime = MoveCd;
 	Vector3 target = Vector3.up;
 	if (m_x && m_z) target = new Vector3(gameObject.transform.position.x + Random.Range(-searchDistance, searchDistance), 0, gameObject.transform.position.z + Random.Range(-searchDistance, searchDistance));
-	else if (!m_x && m_z) target = new Vector3(0, 0, gameObject.transform.position.z + Random.Range(-searchDistance, searchDistance));
-	else if (m_x && !m_z) target = new Vector3(gameObject.transform.position.x + Random.Range(-searchDistance, searchDistance), 0, 0);
+	else if (!m_x && m_z) target = new Vector3(transform.position.x, 0, gameObject.transform.position.z + Random.Range(-searchDistance, searchDistance));
+	else if (m_x && !m_z) target = new Vector3(gameObject.transform.position.x + Random.Range(-searchDistance, searchDistance), 0, transform.position.z);
 
 	if (target != null && m_navAgent != null && m_navAgent.isOnNavMesh) { m_navAgent.SetDestination(target); }
 
