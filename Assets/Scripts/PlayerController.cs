@@ -43,11 +43,42 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+
+		
+		Attack();
+
+		MovePlayer();
+
+		
+
+	}
+
+	public void Attack()
+	{
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			m_animator.SetBool("RangeWeapon", true);
+		}
+		else
+		{
+			m_animator.SetBool("RangeWeapon", false);
+		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			m_animator.SetBool("MeleeWeapon", true);
+		}
+		else
+		{
+			m_animator.SetBool("MeleeWeapon", false);
+		}
+	}
+
+	public void MovePlayer()
+	{
 		Debug.DrawLine(m_groundStart.position, m_groundEnd.position);
 		Vector3 direction = m_groundEnd.position - m_groundStart.position;
 		bool onGround = Physics.Raycast(m_groundStart.position, direction, out RaycastHit hit, direction.magnitude, m_groundLayer);
-
-
 		m_animator.SetBool("OnGround", onGround);
 
 
@@ -141,10 +172,9 @@ public class PlayerController : MonoBehaviour
 				m_rb.AddRelativeForce(Vector3.up * (m_jumpForce / ((m_jumpFrameCounter * 11) - m_jumpFrameCounter * 10)), ForceMode.VelocityChange);
 			}
 
-			
+
 
 
 		}
-
 	}
 }
