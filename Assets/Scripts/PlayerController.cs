@@ -43,17 +43,50 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+
+		
+		Attack();
+
+		MovePlayer();
+
+		
+
+	}
+
+	public void Attack()
+	{
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			m_animator.SetBool("RangeWeapon", true);
+		}
+		else
+		{
+			m_animator.SetBool("RangeWeapon", false);
+		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			m_animator.SetBool("MeleeWeapon", true);
+		}
+		else
+		{
+			m_animator.SetBool("MeleeWeapon", false);
+		}
+	}
+
+	public void MovePlayer()
+	{
 		Debug.DrawLine(m_groundStart.position, m_groundEnd.position);
 		Vector3 direction = m_groundEnd.position - m_groundStart.position;
 		bool onGround = Physics.Raycast(m_groundStart.position, direction, out RaycastHit hit, direction.magnitude, m_groundLayer);
-
-
 		m_animator.SetBool("OnGround", onGround);
 
 
 		if (onGround)
 		{
 			m_animator.SetBool("Jump", false);
+			m_animator.SetBool("Fall", false);
+
 			m_jumpFrameCounter = 0;
 
 			Vector3 torque = new Vector3(0, 1, 0);
@@ -127,9 +160,10 @@ public class PlayerController : MonoBehaviour
 				m_rb.velocity = v;
 			}
 
-			if (m_rb.velocity.y < -0.1f && m_animator.GetCurrentAnimatorStateInfo(0).IsName("Falling Idle") == false)
+			if (m_rb.velocity.y < 0.0f && m_animator.GetCurrentAnimatorStateInfo(0).IsName("Falling Idle") == false)
 			{
-				m_animator.SetTrigger("Fall");
+				m_animator.SetBool("Fall", true);
+				Debug.Log("fall");
 			}
 
 			if (Input.GetButton("Jump") && m_jumpFrameCounter < m_numOfJumpFrames)
@@ -138,10 +172,9 @@ public class PlayerController : MonoBehaviour
 				m_rb.AddRelativeForce(Vector3.up * (m_jumpForce / ((m_jumpFrameCounter * 11) - m_jumpFrameCounter * 10)), ForceMode.VelocityChange);
 			}
 
-			
+
 
 
 		}
-
 	}
 }

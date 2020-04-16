@@ -118,7 +118,6 @@ MonoBehaviour:
   m_jumpForce: 1.59
   m_fallGravityMultiplier: 1
   m_numOfJumpFrames: 10
-  m_cameraTransform: {fileID: 0}
   m_groundStart: {fileID: 8360590842921446956}
   m_groundEnd: {fileID: 8360590842991940309}
   m_groundLayer:
