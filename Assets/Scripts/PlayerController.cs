@@ -6,22 +6,23 @@ public class PlayerController : MonoBehaviour
 {
 	[SerializeField] [Range(0, 20)] float m_speed = 5.0f;
 	[SerializeField] [Range(0, 20)] float m_currentSpeed = 0.0f;
-
 	[SerializeField] [Range(0, 1)] float m_acceleration = 1.0f;
 
 	[SerializeField] [Range(0, 1)] float m_airControl = 0.5f;
 	[SerializeField] [Range(0, 1)] float m_groundDrag = 0.8f;
 	[SerializeField] [Range(0, 1)] float m_landingDragMultiplier = 1.0f;
 	[SerializeField] [Range(0, 30)] int m_numOfLandingDragFrames = 20;
-	[SerializeField] [Range(0, 20)] float m_turnRate = 5.0f;
 	[SerializeField] float m_jumpForce = 40.0f;
 	[SerializeField] float m_fallGravityMultiplier = 4.0f;
 	[SerializeField] [Range(0, 30)] int m_numOfJumpFrames = 10;
 
-
 	[SerializeField] Transform m_groundStart = null;
 	[SerializeField] Transform m_groundEnd = null;
 	[SerializeField] LayerMask m_groundLayer = 0;
+
+	[SerializeField] MeleeWeapon m_meleeWeapon = null;
+	[SerializeField] RangedWeapon m_rangedWeapon = null;
+	[SerializeField] Transform m_hand = null;
 
 
 	Animator m_animator = null;
@@ -29,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
 	int m_jumpFrameCounter = 0;
 	int m_landingDragCounter = 0;
-	Vector3 m_storedVelocity = Vector3.zero;
 
 
 	bool m_wasAirborne = false;
@@ -39,9 +39,44 @@ public class PlayerController : MonoBehaviour
 	{
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
+		m_meleeWeapon.transform.SetParent(m_hand);
 	}
 
 	void Update()
+	{
+
+		
+		Attack();
+
+		MovePlayer();
+
+		
+
+	}
+
+	public void Attack()
+	{
+		if (Input.GetKey(KeyCode.LeftShift))
+		{
+			m_animator.SetBool("RangeWeapon", true);
+		}
+		else
+		{
+			m_animator.SetBool("RangeWeapon", false);
+		}
+
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			m_animator.SetBool("MeleeWeapon", true);
+			m_meleeWeapon.OnAttack();
+		}
+		else
+		{
+			m_animator.SetBool("MeleeWeapon", false);
+		}
+	}
+
+	public void MovePlayer()
 	{
 		Debug.DrawLine(m_groundStart.position, m_groundEnd.position);
 		Vector3 direction = m_groundEnd.position - m_groundStart.position;
@@ -55,8 +90,6 @@ public class PlayerController : MonoBehaviour
 		{
 			m_animator.SetBool("Jump", false);
 			m_jumpFrameCounter = 0;
-
-			Vector3 torque = new Vector3(0, 1, 0);
 
 			Vector3 velocity = Vector3.zero;
 			velocity.x = Input.GetAxis("Horizontal");
@@ -129,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
 			if (m_rb.velocity.y < -0.1f && m_animator.GetCurrentAnimatorStateInfo(0).IsName("Falling Idle") == false)
 			{
-				m_animator.SetTrigger("Fall");
+				m_animator.SetBool("Fall", true);
 			}
 
 			if (Input.GetButton("Jump") && m_jumpFrameCounter < m_numOfJumpFrames)

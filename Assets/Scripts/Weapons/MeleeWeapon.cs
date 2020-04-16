@@ -32,7 +32,7 @@ public class MeleeWeapon : Weapon
         }
     }
 
-    IEnumerable Attaking()
+    IEnumerable Attacking()
     {
         yield return new WaitForSeconds(AttackSpeed - 0.5f);
         WeaponCollider.enabled = false;
