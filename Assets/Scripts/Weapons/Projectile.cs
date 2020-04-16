@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] string ownerTag = "";
 
+    [SerializeField] float lifetime = 10; //need to set up the destroy after x time
+
     public Rigidbody RB
     {
         get { return rb; }
@@ -30,6 +32,11 @@ public class Projectile : MonoBehaviour
     {
         get { return sourceTag; }
         set { sourceTag = value; }
+    }
+
+    private void Start()
+    {
+        
     }
 
     void Update()
