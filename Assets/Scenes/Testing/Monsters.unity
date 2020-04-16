@@ -225,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082357386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.54, y: 1.22, z: -4.73}
+  m_LocalPosition: {x: 13.36, y: 1.22, z: -3.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -592,6 +592,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3467012292994120664, guid: bc2b377e3fa9f404fb5906c0412a4779,
+        type: 3}
+      propertyPath: m_z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467012292994120667, guid: bc2b377e3fa9f404fb5906c0412a4779,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3467012292994120668, guid: bc2b377e3fa9f404fb5906c0412a4779,
         type: 3}
       propertyPath: m_Name
@@ -661,10 +671,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3838508225747772788, guid: 13433587cc9f1cb4889e4e8675d37f94,
+        type: 3}
+      propertyPath: m_z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3838508225747772790, guid: 13433587cc9f1cb4889e4e8675d37f94,
         type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838508225747772799, guid: 13433587cc9f1cb4889e4e8675d37f94,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13433587cc9f1cb4889e4e8675d37f94, type: 3}
@@ -730,10 +750,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4732002540494673956, guid: 5f870793577d16f4193800d14b8fd8b9,
+        type: 3}
+      propertyPath: m_z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4732002540494673960, guid: 5f870793577d16f4193800d14b8fd8b9,
         type: 3}
       propertyPath: m_Name
       value: Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732002540494673961, guid: 5f870793577d16f4193800d14b8fd8b9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f870793577d16f4193800d14b8fd8b9, type: 3}
