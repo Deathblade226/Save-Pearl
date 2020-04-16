@@ -19,6 +19,7 @@ private float AttackTime = 0;
 private bool Attacking = false;
 
 void Update() {
+	if (m_navAgent.isOnNavMesh) { 
 	var player = AIUtilities.GetNearestGameObject(gameObject, "Player", 10.0f, 90.0f);
 	//Debug.Log($"Player: {player}");
 	if (player != null) { 
@@ -45,6 +46,7 @@ void Update() {
 	if (AttackTime > 0) { AttackTime -= Time.deltaTime; }
 
 	animator.SetFloat("Speed", m_navAgent.velocity.magnitude);
+	}
 }
 
 }
