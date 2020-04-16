@@ -5,7 +5,6 @@ using UnityEngine;
 public class MeleeWeapon : Weapon
 {
 
-
     [SerializeField] Collider WeaponCollider = null;
 
     private float timer = 0;

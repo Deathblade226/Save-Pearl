@@ -7,6 +7,17 @@ public class Projectile : MonoBehaviour
 
     private float damage;
 
+    [SerializeField] Rigidbody rb = null;
+
+    [SerializeField] ProjectileBehaviour ProjectileBehaviour = null;
+
+    [SerializeField] string ownerTag = "";
+
+    public Rigidbody RB
+    {
+        get { return rb; }
+    }
+
     public float Damage
     {
         get { return damage; }
@@ -21,9 +32,6 @@ public class Projectile : MonoBehaviour
         set { sourceTag = value; }
     }
 
-    [SerializeField] ProjectileBehaviour ProjectileBehaviour = null;
-
-    // Update is called once per frame
     void Update()
     {
         if(ProjectileBehaviour != null)
@@ -31,4 +39,13 @@ public class Projectile : MonoBehaviour
             ProjectileBehaviour.Update();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != ownerTag)
+        {
+            collision.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+        }
+    }
+
 }

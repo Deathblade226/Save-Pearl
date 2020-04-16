@@ -49,6 +49,7 @@ public class RangedWeapon : Weapon
 
     override public void OnAttack()
     {
-       // Projectile p = Instantiate(projectile, spawnPoint)// need to instatiate with rotation, then add velocity
+        Projectile p = Instantiate(projectile, spawnPoint, (Quaternion.FromToRotation(spawnPoint, targetPoint)));
+        p.RB.AddRelativeForce(((targetPoint - spawnPoint).normalized * Speed),ForceMode.VelocityChange);
     }
 }
