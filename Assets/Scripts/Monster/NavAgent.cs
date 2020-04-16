@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class NavAgent : MonoBehaviour {
 
 [SerializeField] NavMeshAgent m_navAgent = null;
+[SerializeField] GameObject m_weapon = null;
 [SerializeField] float MoveCd = 5.0f;
 [SerializeField] float searchDistance = 5.0f;
 [SerializeField] float attackCD = 3.0f;
@@ -29,7 +30,8 @@ void Update() {
 	else { m_navAgent.SetDestination(player.transform.position); m_navAgent.isStopped = false; }
 	
 	} else if (MoveTime <= 0) {
-	m_navAgent.isStopped = false;
+
+	if (m_navAgent.isStopped && m_navAgent != null && m_navAgent.isOnNavMesh) {m_navAgent.isStopped = false;}
 	//Debug.Log("Moving");
 	MoveTime = MoveCd;
 	Vector3 target = Vector3.up;
@@ -37,7 +39,10 @@ void Update() {
 	else if (!m_x && m_z) target = new Vector3(transform.position.x, 0, gameObject.transform.position.z + Random.Range(-searchDistance, searchDistance));
 	else if (m_x && !m_z) target = new Vector3(gameObject.transform.position.x + Random.Range(-searchDistance, searchDistance), 0, transform.position.z);
 
-	if (target != null && m_navAgent != null && m_navAgent.isOnNavMesh) { m_navAgent.SetDestination(target); }
+	if (target != null && m_navAgent != null && m_navAgent.isOnNavMesh) { 
+	m_navAgent.SetDestination(target); 
+	if (m_weapon != null && !m_weapon.gameObject.activeSelf) { m_weapon.SetActive(true); }		
+	}
 
 	}
 
