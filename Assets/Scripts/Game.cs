@@ -8,8 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    public DataSaver Data { get; set; }
     public static Game Instance { get; private set; }
+    public DataSaver Data { get; set; }
+    public SceneManagerObject SceneManager { get; set; }
     public bool IsPlaying { get; set; }
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class Game : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(Instance);
+            SceneManager = GetComponent<SceneManagerObject>();
         }
         else
         {
