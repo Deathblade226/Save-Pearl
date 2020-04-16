@@ -128,7 +128,7 @@ public class TitleScreenUI : MonoBehaviour
 
     public void LoadGame()
     {
-        Game.Instance.Data = SaveSystem.LoadObject<DataSaver>($"SavePearlFile{SelectedProfile}GameData.gme");
+        Game.Instance.Data = SaveSystem.LoadObject<DataSaver>($"SavePearlFile{SelectedProfile+1}GameData.gme");
     }
 
     public void SelectProfile(int profileNumber)
