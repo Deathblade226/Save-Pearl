@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] LayerMask m_groundLayer = 0;
 
 	[SerializeField] MeleeWeapon m_meleeWeapon = null;
+	Renderer m_meleeRenderer = null;
 	[SerializeField] RangedWeapon m_rangedWeapon = null;
+	Renderer m_rangedRenderer = null;
 	[SerializeField] Transform m_hand = null;
+
 
 
 	Animator m_animator = null;
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
 	int m_jumpFrameCounter = 0;
 	int m_landingDragCounter = 0;
 
+	int m_weaponNumber = 0; //0 = melee, 1 = ranged
 
 	bool m_wasAirborne = false;
 
@@ -40,11 +44,13 @@ public class PlayerController : MonoBehaviour
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
 		m_meleeWeapon.transform.SetParent(m_hand);
+		m_meleeRenderer = m_meleeWeapon.GetComponent<Renderer>();
+		m_rangedRenderer = m_rangedWeapon.GetComponentInChildren<Renderer>();
 	}
 
 	void Update()
 	{
-
+		
 		
 		Attack();
 
@@ -56,7 +62,23 @@ public class PlayerController : MonoBehaviour
 
 	public void Attack()
 	{
-		if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetKeyDown(KeyCode.Q))
+		{
+			m_weaponNumber++;
+			m_weaponNumber = (m_weaponNumber) % 2;
+		}
+		if (m_weaponNumber == 0)
+		{
+			m_meleeRenderer.enabled = true;
+			m_rangedRenderer.enabled = false;
+		}
+		else if (m_weaponNumber == 1)
+		{
+			m_meleeRenderer.enabled = false;
+			m_rangedRenderer.enabled = true;
+		}
+
+		if (Input.GetMouseButton(0) && m_weaponNumber == 1)
 		{
 			m_animator.SetBool("RangeWeapon", true);
 		}
@@ -65,10 +87,13 @@ public class PlayerController : MonoBehaviour
 			m_animator.SetBool("RangeWeapon", false);
 		}
 
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetMouseButton(0) && m_weaponNumber == 0)
 		{
-			m_animator.SetBool("MeleeWeapon", true);
-			m_meleeWeapon.OnAttack();
+			if(m_meleeWeapon.canAttack)
+			{
+				m_animator.SetBool("MeleeWeapon", true);
+				m_meleeWeapon.OnAttack();
+			}
 		}
 		else
 		{
