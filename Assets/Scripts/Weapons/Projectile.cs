@@ -34,6 +34,9 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        transform.rotation = Quaternion.LookRotation(RB.velocity);
+        transform.Rotate(-90.0f, 0.0f, 0.0f);
+
         if(ProjectileBehaviour != null)
         {
             ProjectileBehaviour.Update();
@@ -44,7 +47,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.tag != ownerTag)
         {
-            collision.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            collision.gameObject.GetComponent<Damagable>()?.ApplyDamage(Damage);
         }
     }
 
