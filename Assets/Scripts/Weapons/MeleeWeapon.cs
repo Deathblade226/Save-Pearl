@@ -38,11 +38,11 @@ public class MeleeWeapon : Weapon
         StopCoroutine("Attacking");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other) 
     {
-        if(collision.gameObject.tag != OwnerTag )
+        if(other.gameObject.tag != OwnerTag )
         {
-            collision.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
         }
     }
 }
