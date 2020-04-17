@@ -55,7 +55,7 @@ public class RangedWeapon : Weapon
         targetPoint.z = 0.0f;
         spawnPoint = transform.position;
         Speed = 2.0f;
-        Debug.Log(targetPoint);
+        //Debug.Log(targetPoint);
         Projectile p = Instantiate(projectile, spawnPoint, Quaternion.identity);
         p.transform.LookAt(targetPoint);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);

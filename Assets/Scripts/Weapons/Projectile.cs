@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    private float damage;
+    [SerializeField] private float damage;
 
     [SerializeField] Rigidbody rb = null;
 
@@ -45,8 +45,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != ownerTag)
+        if (other.gameObject.tag != ownerTag && other.gameObject.tag != "Untagged")
         {
+            Debug.Log(other.gameObject.tag);
             other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
         }
     }
