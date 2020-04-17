@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56084950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 1373918117}
   - component: {fileID: 1373918116}
   - component: {fileID: 1373918115}
+  - component: {fileID: 1373918118}
   m_Layer: 0
   m_Name: Dungeon
   m_TagString: Untagged
@@ -264,7 +265,7 @@ MonoBehaviour:
     IgnoreSpriteBounds: 0
     UpDirection: 2
     OverrideRepeatMode: 1
-    RepeatMode: 1
+    RepeatMode: 0
     OverrideAllowTileRotation: 1
     AllowTileRotation: 0
     DebugRender: 0
@@ -278,13 +279,13 @@ MonoBehaviour:
     TilePlacementBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
-    OverlapThreshold: 0.01
+    OverlapThreshold: 0.05
     Padding: 0
     DisallowOverhangs: 0
     Root: {fileID: 0}
-    DungeonFlow: {fileID: 11400000, guid: 18e49d346b40d4f40a89bc64e67d2030, type: 2}
+    DungeonFlow: {fileID: 0}
     fileVersion: 1
-  GenerateOnStart: 1
+  GenerateOnStart: 0
   Root: {fileID: 1373918114}
 --- !u!4 &1373918117
 Transform:
@@ -300,6 +301,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1373918118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373918114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef39adcc7fbe9784593a812080b8eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeon: {fileID: 1373918116}
+  DebugDifficulty: 1
+  difficulty:
+  - {fileID: 11400000, guid: 18e49d346b40d4f40a89bc64e67d2030, type: 2}
+  - {fileID: 11400000, guid: ac09f1e2db523524081d6d8c20492745, type: 2}
+  - {fileID: 11400000, guid: bbb79f0c4f0bfe8488310855d2d0817c, type: 2}
 --- !u!1 &1416595580
 GameObject:
   m_ObjectHideFlags: 0

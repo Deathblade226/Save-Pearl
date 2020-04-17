@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e228b45736a8cf4ea000616e628a4dd, type: 3}
+  m_Name: Medium
+  m_EditorClassIdentifier: 
+  globalPropGroupID_obsolete: 
+  globalPropRanges_obsolete: []
+  Length:
+    Min: 5
+    Max: 5
+  BranchMode: 0
+  BranchCount:
+    Min: 1
+    Max: 5
+  GlobalProps: []
+  KeyManager: {fileID: 0}
+  DoorwayConnectionChance: 1
+  RestrictConnectionToSameSection: 1
+  TileInjectionRules: []
+  Nodes:
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: 3bde228597a25a048986c53db5574981, type: 2}
+    NodeType: 1
+    Position: 0
+    Label: Start
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: 637f7ee9d0b04df4cb0cf6ea04820355, type: 2}
+    NodeType: 2
+    Position: 1
+    Label: Goal
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: f361599f101fab44286a6cf3deccab05, type: 2}
+    NodeType: 0
+    Position: 0.22835395
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: f361599f101fab44286a6cf3deccab05, type: 2}
+    NodeType: 0
+    Position: 0.4985728
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  - Graph: {fileID: 11400000}
+    TileSets:
+    - {fileID: 11400000, guid: f361599f101fab44286a6cf3deccab05, type: 2}
+    NodeType: 0
+    Position: 0.78401524
+    Label: New Node
+    Keys: []
+    Locks: []
+    LockPlacement: 0
+  Lines:
+  - Graph: {fileID: 11400000}
+    DungeonArchetypes:
+    - {fileID: 11400000, guid: f1255aba1c71b7545a6d5335eedcf465, type: 2}
+    Position: 0
+    Length: 1
+    Keys: []
+    Locks: []
+  currentFileVersion: 1

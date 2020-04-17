@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 14fa68efaba8d924eb99c759208af25d
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      74: -203655887218126122
+    second: mixamo.com
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bodymat
+    second: {fileID: 2100000, guid: 6651ac946d76a78459a5a08796f42af7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottommat
+    second: {fileID: 2100000, guid: 72f55c2d61b832a4b82c02b4fc4cbfb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hairmat
+    second: {fileID: 2100000, guid: 9a7b6c4294299804986294e2c224f660, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoesmat
+    second: {fileID: 2100000, guid: 87233bca17d95354d802bdb1a8dae414, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Topmat
+    second: {fileID: 2100000, guid: 9fdb58b867b8de8459fb5b734ea59559, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Body_Diffuse
+    second: {fileID: 2800000, guid: 03dfd30bb22a21c48b5ef0bed5dc6bc7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Body_Gloss
+    second: {fileID: 2800000, guid: 05fe2afb8752a3841b2413441680559c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Body_Normal
+    second: {fileID: 2800000, guid: 6f8a0f2190d2b2a4fa9ba942fcffe9df, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Body_Opacity
+    second: {fileID: 2800000, guid: f1131f480ddcf8f49942b11c6fba71b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Body_Specular
+    second: {fileID: 2800000, guid: bf4bedf88f7c56549900dbfa10b55f01, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Bottom_Diffuse
+    second: {fileID: 2800000, guid: e48a9d446121aca4d9c1c28dc6ba32b3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Bottom_Gloss
+    second: {fileID: 2800000, guid: 996356816b1a01e4b81738e461dcab23, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Bottom_Normal
+    second: {fileID: 2800000, guid: 9e99eab1789329944b64e783c6cde52e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Bottom_Opacity
+    second: {fileID: 2800000, guid: ed18d8e1b0469784d8c29c53a4907ac9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Bottom_Specular
+    second: {fileID: 2800000, guid: fc151e38efe5ef74e86945af8457e4b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Hair_Diffuse
+    second: {fileID: 2800000, guid: 80b287f93dd71f94b898f3e030a7d9ec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Hair_Gloss
+    second: {fileID: 2800000, guid: fd6e40b0d4d1fd843a6e55704fcf0b5f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Hair_Normal
+    second: {fileID: 2800000, guid: 627822c5d6c6af04994f346b98fb4c2c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Hair_Opacity
+    second: {fileID: 2800000, guid: 895aea29ee7424240bcc53c54a947e97, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Hair_Specular
+    second: {fileID: 2800000, guid: cd950cbfa5da49a4a82ad9b7937a96d3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Shoes_Diffuse
+    second: {fileID: 2800000, guid: 0eb264858bc6f664dbfb046d0bb58fe1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Shoes_Gloss
+    second: {fileID: 2800000, guid: 8ed047a0a74a70d4c92078fd0589baf4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Shoes_Normal
+    second: {fileID: 2800000, guid: aae86d21e508013458718f3fa6b4ddf8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Shoes_Opacity
+    second: {fileID: 2800000, guid: e8294bd884efd4746afc9118f99c2d96, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Shoes_Specular
+    second: {fileID: 2800000, guid: 1e30b134d63b5254681e813e9217ac36, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Top_Diffuse
+    second: {fileID: 2800000, guid: 9537faeb9ab0b764cb5122386e232fb3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Top_Gloss
+    second: {fileID: 2800000, guid: bb51f9849a1f7b04889d34fdf6119c94, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Top_Normal
+    second: {fileID: 2800000, guid: e304aa494f58a3a48afbc6201cadb6b0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Top_Opacity
+    second: {fileID: 2800000, guid: e0994a63d20b9724cb61e9245896feca, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pearl_Top_Specular
+    second: {fileID: 2800000, guid: 05efc04e848dbe1488c534ca4cd23780, type: 3}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
