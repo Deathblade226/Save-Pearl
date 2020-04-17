@@ -11,6 +11,7 @@ public class TitleScreenUI : MonoBehaviour
     [SerializeField] Canvas OverwritePopup = null;
     [SerializeField] Canvas ProfilePopup = null;
     [SerializeField] GameObject[] outputs = new GameObject[3];
+    [SerializeField] GameObject[] buttons = new GameObject[3];
 
     public FileInfo FileInfo { get; set; }
 
@@ -37,6 +38,26 @@ public class TitleScreenUI : MonoBehaviour
         set
         {
             difficulty = value;
+            switch (value)
+            {
+                case 0:
+                    buttons[0].GetComponent<Image>().color = Color.green;
+                    buttons[1].GetComponent<Image>().color = Color.white;
+                    buttons[2].GetComponent<Image>().color = Color.white;
+                    break;
+                case 1:
+                    buttons[0].GetComponent<Image>().color = Color.white;
+                    buttons[1].GetComponent<Image>().color = Color.blue;
+                    buttons[2].GetComponent<Image>().color = Color.white;
+                    break;
+                case 2:
+                    buttons[0].GetComponent<Image>().color = Color.white;
+                    buttons[1].GetComponent<Image>().color = Color.white;
+                    buttons[2].GetComponent<Image>().color = Color.red;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -59,7 +80,7 @@ public class TitleScreenUI : MonoBehaviour
         }
     }
 
-    private string characterName;
+    private string characterName = "";
 
     public string CharacterName
     {
@@ -101,6 +122,7 @@ public class TitleScreenUI : MonoBehaviour
         FileSelectScreen.enabled = false;
         OverwritePopup.enabled = false;
         ProfilePopup.enabled = false;
+        GetComponentInChildren<InstructionsUI>().CloseInstructions();
 
     }
 
@@ -124,11 +146,13 @@ public class TitleScreenUI : MonoBehaviour
         ProfilePopup.enabled = false;
 
         Game.Instance.IsPlaying = true;
+        Game.Instance.SceneManager.LoadSceneAsyncByName("Game");
     }
 
     public void LoadGame()
     {
-        Game.Instance.Data = SaveSystem.LoadObject<DataSaver>($"SavePearlFile{SelectedProfile+1}GameData.gme");
+        Game.Instance.Data = SaveSystem.LoadObject<DataSaver>($"SavePearlFile{SelectedProfile + 1}GameData.gme");
+        Game.Instance.SceneManager.LoadSceneAsyncByName("Game");
     }
 
     public void SelectProfile(int profileNumber)
@@ -145,6 +169,9 @@ public class TitleScreenUI : MonoBehaviour
 
     public void CreateProfile(int profileNumber, int difficulty, string characterName)
     {
+        buttons[0].GetComponent<Image>().color = Color.white;
+        buttons[1].GetComponent<Image>().color = Color.white;
+        buttons[2].GetComponent<Image>().color = Color.white;
         FileInfo.Names[profileNumber] = characterName;
         FileInfo.Difficulties[profileNumber] = difficulty;
         SaveSystem.SaveObject(FileInfo, "SavePearlFileInfo.info");
@@ -158,13 +185,16 @@ public class TitleScreenUI : MonoBehaviour
     {
         SelectedProfile = -1;
         Difficulty = -1;
+        buttons[0].GetComponent<Image>().color = Color.white;
+        buttons[1].GetComponent<Image>().color = Color.white;
+        buttons[2].GetComponent<Image>().color = Color.white;
 
         ProfilePopup.enabled = false;
     }
 
     public void Instructions()
     {
-        //TODO Implement Instructions Popup
+        GetComponentInChildren<InstructionsUI>().ChangePage(0);
     }
 
     IEnumerator PromptForOverwrite()
