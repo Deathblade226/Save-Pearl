@@ -49,7 +49,16 @@ public class RangedWeapon : Weapon
 
     override public void OnAttack()
     {
-        Projectile p = Instantiate(projectile, spawnPoint, (Quaternion.FromToRotation(spawnPoint, targetPoint)));
-        p.RB.AddRelativeForce(((targetPoint - spawnPoint).normalized * Speed),ForceMode.VelocityChange);
+        Vector3 position = Input.mousePosition;
+        position.z = Mathf.Abs(Camera.main.transform.position.z);
+        targetPoint = Camera.main.ScreenToWorldPoint(position);
+        targetPoint.z = 0.0f;
+        spawnPoint = transform.position;
+        Speed = 2.0f;
+        Debug.Log(targetPoint);
+        Projectile p = Instantiate(projectile, spawnPoint, Quaternion.identity);
+        p.transform.LookAt(targetPoint);
+        p.transform.Rotate(-90.0f, 0.0f, 0.0f);
+        p.RB.AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
     }
 }

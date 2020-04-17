@@ -9,10 +9,15 @@ public class MeleeWeapon : Weapon
 
     private float timer = 0;
 
+    public bool canAttack { get { return timer >= AttackSpeed + AttackDelay; } }
 
+    private void Start()
+    {
+        timer = AttackSpeed + AttackDelay;
+    }
     private void Update()
     {
-        if (timer < AttackSpeed)
+        if (timer < AttackSpeed + AttackDelay)
         {
             timer += Time.deltaTime;
         }
@@ -20,18 +25,17 @@ public class MeleeWeapon : Weapon
 
     override public void OnAttack()
     {
-        if (timer >= AttackSpeed + AttackDelay)
+        if (canAttack)
         {
             timer = 0;
 
             WeaponCollider.enabled = true;
-
             StartCoroutine("Attacking");
 
         }
     }
 
-    IEnumerable Attacking()
+    IEnumerator Attacking()
     {
         yield return new WaitForSeconds(AttackSpeed - 0.5f);
         WeaponCollider.enabled = false;
