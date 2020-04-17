@@ -43,12 +43,11 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag != ownerTag)
+        if (other.gameObject.tag != ownerTag)
         {
-            collision.gameObject.GetComponent<Damagable>()?.ApplyDamage(Damage);
+            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
         }
     }
-
 }
