@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f517b04394e3824a9e95532a946a6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   rb: {fileID: 8437403047665920722}
   ProjectileBehaviour: {fileID: 0}
   ownerTag: 
@@ -169,7 +170,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 20
+  m_Radius: 0.20000003
+  m_Height: 21.212284
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -1}
+  m_Center: {x: 0, y: -0.60613513, z: -1}

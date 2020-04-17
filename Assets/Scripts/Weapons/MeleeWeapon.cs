@@ -44,7 +44,7 @@ public class MeleeWeapon : Weapon
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.tag != OwnerTag )
+        if(other.gameObject.tag != OwnerTag && other.gameObject.tag != "Untagged")
         {
             other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
         }
