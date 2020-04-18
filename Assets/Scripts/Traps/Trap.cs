@@ -20,7 +20,7 @@ public class Trap : MonoBehaviour
     {
         timeElapsed += Time.deltaTime;
 
-        if(timeElapsed >= damageInterval )
+        if(timeElapsed >= damageInterval && other.gameObject.tag != "Untagged")
         {
             timeElapsed = 0;
             other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
