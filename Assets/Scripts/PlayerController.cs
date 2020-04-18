@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] LayerMask m_groundLayer = 0;
 
 	[SerializeField] MeleeWeapon m_meleeWeapon = null;
+	Renderer m_meleeRenderer = null;
 	[SerializeField] RangedWeapon m_rangedWeapon = null;
+	Renderer m_rangedRenderer = null;
 	[SerializeField] Transform m_hand = null;
+
 
 
 	Animator m_animator = null;
@@ -31,8 +34,11 @@ public class PlayerController : MonoBehaviour
 	int m_jumpFrameCounter = 0;
 	int m_landingDragCounter = 0;
 
+	int m_weaponNumber = 0; //0 = melee, 1 = ranged
 
 	bool m_wasAirborne = false;
+	bool m_isBowDrawn = false;
+	bool m_isMidAttack = false;
 
 
 	void Start()
@@ -40,6 +46,8 @@ public class PlayerController : MonoBehaviour
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
 		m_meleeWeapon.transform.SetParent(m_hand);
+		m_meleeRenderer = m_meleeWeapon.GetComponent<Renderer>();
+		m_rangedRenderer = m_rangedWeapon.GetComponentInChildren<Renderer>();
 	}
 
 	void Update()
@@ -54,26 +62,66 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	public void AttackFinished()
+	{
+		m_isMidAttack = false;
+		m_isBowDrawn = false;
+		m_animator.SetBool("MeleeWeapon", false);
+
+	}
+
+	public void BowDrawn()
+	{
+		m_isBowDrawn = true;
+	}
+
 	public void Attack()
 	{
-		if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetKeyDown(KeyCode.Q))
 		{
-			m_animator.SetBool("RangeWeapon", true);
+			if(!m_isMidAttack && !m_isBowDrawn)
+			{
+				m_weaponNumber++;
+				m_weaponNumber = (m_weaponNumber) % 2;
+			}
+			
 		}
-		else
+		if (m_weaponNumber == 0 && !m_isMidAttack)
 		{
-			m_animator.SetBool("RangeWeapon", false);
+			m_meleeRenderer.enabled = true;
+			m_rangedRenderer.enabled = false;
+			if (Input.GetMouseButton(0))
+			{
+				if (m_meleeWeapon.canAttack)
+				{
+					m_animator.SetBool("MeleeWeapon", true);
+					m_meleeWeapon.OnAttack();
+					m_isMidAttack = true;
+				}
+			}
+			if (!Input.GetMouseButton(0))
+			{
+				m_animator.SetBool("MeleeWeapon", false);
+			}
+		}
+		else if (m_weaponNumber == 1)
+		{
+			m_meleeRenderer.enabled = false;
+			m_rangedRenderer.enabled = true;
+			if (Input.GetMouseButton(0) && !m_isMidAttack)
+			{
+				m_animator.SetBool("RangeWeapon", true);
+				m_isMidAttack = true;
+			}
+			if (!Input.GetMouseButton(0) && m_isBowDrawn)
+			{
+				m_rangedWeapon.OnAttack();
+				m_animator.SetBool("RangeWeapon", false);
+				AttackFinished();
+			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			m_animator.SetBool("MeleeWeapon", true);
-			m_meleeWeapon.OnAttack();
-		}
-		else
-		{
-			m_animator.SetBool("MeleeWeapon", false);
-		}
+
 	}
 
 	public void MovePlayer()
@@ -128,8 +176,16 @@ public class PlayerController : MonoBehaviour
 
 			m_rb.AddForce(velocity * speedMultiplier * (m_groundDrag * landingMultiplier), ForceMode.VelocityChange);
 
-			transform.rotation = velocity != Vector3.zero ? Quaternion.LookRotation(velocity) : transform.rotation;//velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
+			if(!m_isBowDrawn && !m_isMidAttack)
+				transform.rotation = velocity != Vector3.zero ? Quaternion.LookRotation(velocity) : transform.rotation;//velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
+			else if(m_isBowDrawn)
+			{
+				Vector3 position = Input.mousePosition;
+				position.z = Mathf.Abs(Camera.main.transform.position.z);
+				Vector3 mouseInWorld = Camera.main.ScreenToWorldPoint(position);
+				transform.rotation = mouseInWorld.x > transform.position.x ? Quaternion.LookRotation(Vector3.right) : Quaternion.LookRotation(Vector3.left);
 
+			}
 			m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_speed);
 
 

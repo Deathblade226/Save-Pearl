@@ -49,6 +49,24 @@ public class RangedWeapon : Weapon
 
     override public void OnAttack()
     {
-       // Projectile p = Instantiate(projectile, spawnPoint)// need to instatiate with rotation, then add velocity
+        Vector3 position = Input.mousePosition;
+        position.z = Mathf.Abs(Camera.main.transform.position.z);
+        targetPoint = Camera.main.ScreenToWorldPoint(position);
+        targetPoint.z = 0.0f;
+        spawnPoint = transform.position;
+        Speed = 2.0f;
+        Projectile p = Instantiate(projectile, spawnPoint, Quaternion.identity);
+        p.transform.LookAt(targetPoint);
+        p.transform.Rotate(-90.0f, 0.0f, 0.0f);
+        p.RB.AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
+        
+    }
+    public void OnAttackMonster() {
+        var player = AIUtilities.GetNearestGameObject(gameObject, "Player", 10.0f, 90.0f);
+        Projectile p = Instantiate(projectile, transform.position + transform.up * 1.5f + transform.forward, Quaternion.identity);
+        p.transform.LookAt(player.transform);
+        p.transform.Rotate(-90.0f, 0.0f, 0.0f);
+        p.RB.AddForce(transform.forward * AttackSpeed,ForceMode.VelocityChange);
+        Destroy(p, 10.0f);
     }
 }

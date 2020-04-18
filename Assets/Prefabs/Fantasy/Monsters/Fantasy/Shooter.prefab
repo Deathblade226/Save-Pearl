@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7354845249151074036}
   m_Layer: 0
   m_Name: Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,10 +415,6 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 022a72268e462114788abcf0c0b07418, type: 3}
       propertyPath: m_Name
       value: Elven Long Bow
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 022a72268e462114788abcf0c0b07418, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 022a72268e462114788abcf0c0b07418, type: 3}
       propertyPath: m_LocalRotation.x
