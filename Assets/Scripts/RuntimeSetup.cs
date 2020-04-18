@@ -10,6 +10,9 @@ public class RuntimeSetup : MonoBehaviour {
 [SerializeField] List<DunGen.Graph.DungeonFlow> difficulty = new List<DunGen.Graph.DungeonFlow>();
 
 private void Awake() {
+    GameObject go = GameObject.FindGameObjectWithTag("GameController");
+    Game game = go.GetComponent<Game>();
+    if (game != null) { DebugDifficulty = game.Data.Difficulty; }
     dungeon.Generator.DungeonFlow = difficulty[DebugDifficulty];
     dungeon.Generator.LengthMultiplier = 5.0f;
 }
