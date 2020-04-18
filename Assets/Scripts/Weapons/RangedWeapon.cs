@@ -47,7 +47,7 @@ public class RangedWeapon : Weapon
 
     [SerializeField] private Projectile projectile = null;
 
-    override public void OnAttack()
+    override public void OnAttack(int strength, int dexterity)
     {
         Vector3 position = Input.mousePosition;
         position.z = Mathf.Abs(Camera.main.transform.position.z);
@@ -58,8 +58,9 @@ public class RangedWeapon : Weapon
         Projectile p = Instantiate(projectile, spawnPoint, Quaternion.identity);
         p.transform.LookAt(targetPoint);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
-        p.GetComponent<Rigidbody>().AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
-        
+        p.RB.AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
+        p.Damage = Damage * (dexterity * 0.5f);
+        Destroy(p.gameObject, 2.0f);
     }
     public void OnAttackMonster() {
         var player = AIUtilities.GetNearestGameObject(gameObject, "Player", 10.0f, 90.0f);
