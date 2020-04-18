@@ -58,7 +58,7 @@ public class RangedWeapon : Weapon
         Projectile p = Instantiate(projectile, spawnPoint, Quaternion.identity);
         p.transform.LookAt(targetPoint);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
-        p.RB.AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
+        p.GetComponent<Rigidbody>().AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
         
     }
     public void OnAttackMonster() {
@@ -66,7 +66,7 @@ public class RangedWeapon : Weapon
         Projectile p = Instantiate(projectile, transform.position + transform.up * 1.5f + transform.forward, Quaternion.identity);
         p.transform.LookAt(player.transform);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
-        p.RB.AddForce(transform.forward * AttackSpeed,ForceMode.VelocityChange);
+        p.GetComponent<Rigidbody>().AddForce(transform.forward * AttackSpeed,ForceMode.VelocityChange);
         Destroy(p, 10.0f);
     }
 }

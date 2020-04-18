@@ -9,7 +9,7 @@ public class InstructionsUI : MonoBehaviour
 
     public void ChangePage(int pageNumber)
     {
-        Instructions.enabled = true;
+        Instructions[pageNumber].enabled = true;
     }
 
     public void CloseInstructions()
