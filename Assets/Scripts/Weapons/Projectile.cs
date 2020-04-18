@@ -53,7 +53,6 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag != ownerTag && other.gameObject.tag != "Untagged")
         {
-            Debug.Log(other.gameObject.tag);
             other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
             Destroy(gameObject);
         }
