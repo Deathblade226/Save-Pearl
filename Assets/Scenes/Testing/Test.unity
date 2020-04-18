@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeon: {fileID: 1373918116}
+  Debug: 1
   DebugDifficulty: 1
   difficulty:
   - {fileID: 11400000, guid: 18e49d346b40d4f40a89bc64e67d2030, type: 2}
