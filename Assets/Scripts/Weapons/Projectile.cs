@@ -4,8 +4,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
     [SerializeField] private float damage;
+
+    [SerializeField] Rigidbody rb = null;
+
+    [SerializeField] ProjectileBehaviour ProjectileBehaviour = null;
+
+    [SerializeField] string ownerTag = "";
+
+    [SerializeField] float lifetime = 10; //need to set up the destroy after x time
+
+    public Rigidbody RB
+    {
+        get { return rb; }
+    }
 
     public float Damage
     {
@@ -21,15 +33,17 @@ public class Projectile : MonoBehaviour
         set { sourceTag = value; }
     }
 
-    [SerializeField] ProjectileBehaviour ProjectileBehaviour = null;
+    private void Start()
+    {
 
-    // Update is called once per frame
+    }
+
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(GetComponent<Rigidbody>().velocity);
+        transform.rotation = Quaternion.LookRotation(RB.velocity);
         transform.Rotate(-90.0f, 0.0f, 0.0f);
 
-        if(ProjectileBehaviour != null)
+        if (ProjectileBehaviour != null)
         {
             ProjectileBehaviour.Update();
         }
@@ -37,7 +51,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != gameObject.tag && other.gameObject.tag != "Untagged")
+        if (other.gameObject.tag != ownerTag && other.gameObject.tag != "Untagged")
         {
             Debug.Log(other.gameObject.tag);
             other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
