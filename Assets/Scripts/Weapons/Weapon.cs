@@ -63,7 +63,7 @@ public abstract class Weapon : MonoBehaviour
         set { attackDelay = value; }
     }
 
-    abstract public void OnAttack();
+    abstract public void OnAttack(int strength, int dexterity);
     
 
 }

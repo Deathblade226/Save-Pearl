@@ -5,7 +5,7 @@ using UnityEngine;
 public class InstructionsUI : MonoBehaviour
 {
     [SerializeField] Canvas[] Instructions = null;
-    private int CurrentPage { get; set; }
+    private int CurrentPage { get; set; } = 0;
 
     public void ChangePage(int pageNumber)
     {
@@ -16,6 +16,9 @@ public class InstructionsUI : MonoBehaviour
 
     public void CloseInstructions()
     {
-        Instructions[CurrentPage].enabled = false;
+        foreach(Canvas canvas in Instructions)
+        {
+            canvas.enabled = false;
+        }
     }
 }

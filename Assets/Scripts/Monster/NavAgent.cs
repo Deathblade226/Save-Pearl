@@ -25,7 +25,7 @@ void Update() {
 	if (player != null) { 
 	Attacking = ((transform.position - player.transform.position).magnitude <= attackRange && AttackTime <= 0);
 	//Debug.Log($"Attacking: {Attacking}");
-	if (Attacking) { animator.SetTrigger("Attack");  AttackTime = attackCD; m_navAgent.isStopped = true; }
+	if (Attacking) { transform.LookAt(player.transform); animator.SetTrigger("Attack");  AttackTime = attackCD; m_navAgent.isStopped = true; }
 	else if ((transform.position - player.transform.position).magnitude <= attackRange) { m_navAgent.isStopped = true; }
 	else { m_navAgent.SetDestination(player.transform.position); m_navAgent.isStopped = false; }
 	

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 
-    private float damage;
+    [SerializeField] private float damage;
 
     [SerializeField] Rigidbody rb = null;
 
@@ -41,18 +41,22 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        transform.rotation = Quaternion.LookRotation(RB.velocity);
+        transform.Rotate(-90.0f, 0.0f, 0.0f);
+
         if(ProjectileBehaviour != null)
         {
             ProjectileBehaviour.Update();
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag != ownerTag)
+        if (other.gameObject.tag != ownerTag && other.gameObject.tag != "Untagged")
         {
-            collision.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            Debug.Log(other.gameObject.tag);
+            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            Destroy(gameObject);
         }
     }
-
 }
