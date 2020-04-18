@@ -9,6 +9,8 @@ public class MeleeWeapon : Weapon
 
     private float timer = 0;
 
+    private int playerStrength = 0;
+
     public bool canAttack { get { return timer >= AttackSpeed + AttackDelay; } }
 
     private void Start()
@@ -23,12 +25,12 @@ public class MeleeWeapon : Weapon
         }
     }
 
-    override public void OnAttack()
+    override public void OnAttack(int strength, int dexterity)
     {
         if (canAttack)
         {
             timer = 0;
-
+            playerStrength = strength;
             WeaponCollider.enabled = true;
             StartCoroutine("Attacking");
 
@@ -46,7 +48,8 @@ public class MeleeWeapon : Weapon
     {
         if(other.gameObject.tag != OwnerTag && other.gameObject.tag != "Untagged")
         {
-            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage * (playerStrength * 0.5f));
+
         }
     }
 }

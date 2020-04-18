@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Transform m_groundEnd = null;
 	[SerializeField] LayerMask m_groundLayer = 0;
 
-	[SerializeField] MeleeWeapon m_meleeWeapon = null;
 	Renderer m_meleeRenderer = null;
-	[SerializeField] RangedWeapon m_rangedWeapon = null;
 	Renderer m_rangedRenderer = null;
 	[SerializeField] Transform m_hand = null;
+
+	[SerializeField] Player m_playerStats = null;
+
+	public Player PlayerStats { get; }
+
 
 
 
@@ -45,9 +48,9 @@ public class PlayerController : MonoBehaviour
 	{
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
-		m_meleeWeapon.transform.SetParent(m_hand);
-		m_meleeRenderer = m_meleeWeapon.GetComponent<Renderer>();
-		m_rangedRenderer = m_rangedWeapon.GetComponentInChildren<Renderer>();
+		m_playerStats.MeleeWeapon.transform.SetParent(m_hand);
+		m_meleeRenderer = m_playerStats.MeleeWeapon.GetComponent<Renderer>();
+		m_rangedRenderer = m_playerStats.RangedWeapon.GetComponentInChildren<Renderer>();
 	}
 
 	void Update()
@@ -92,10 +95,10 @@ public class PlayerController : MonoBehaviour
 			m_rangedRenderer.enabled = false;
 			if (Input.GetMouseButton(0))
 			{
-				if (m_meleeWeapon.canAttack)
+				if (m_playerStats.MeleeWeapon.canAttack)
 				{
 					m_animator.SetBool("MeleeWeapon", true);
-					m_meleeWeapon.OnAttack();
+					m_playerStats.MeleeWeapon.OnAttack(m_playerStats.Strength, m_playerStats.Dexterity);
 					m_isMidAttack = true;
 				}
 			}
@@ -115,7 +118,7 @@ public class PlayerController : MonoBehaviour
 			}
 			if (!Input.GetMouseButton(0) && m_isBowDrawn)
 			{
-				m_rangedWeapon.OnAttack();
+				m_playerStats.RangedWeapon.OnAttack(m_playerStats.Strength, m_playerStats.Dexterity);
 				m_animator.SetBool("RangeWeapon", false);
 				AttackFinished();
 			}
