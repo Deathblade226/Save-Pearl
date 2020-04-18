@@ -51,7 +51,8 @@ MonoBehaviour:
   attackSpeed: 5
   ownerTag: 
   attackDelay: 3
-  projectile: {fileID: 0}
+  projectile: {fileID: 2591774643144995035, guid: b3bc9d4600b7eec429a14a6fb9b8514b,
+    type: 3}
 --- !u!1001 &7211628351969868476
 PrefabInstance:
   m_ObjectHideFlags: 0

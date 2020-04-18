@@ -181,9 +181,9 @@ public class PlayerController : MonoBehaviour
 			else if(m_isBowDrawn)
 			{
 				Vector3 position = Input.mousePosition;
-				position.z = Camera.main.transform.position.z;
+				position.z = Mathf.Abs(Camera.main.transform.position.z);
 				Vector3 mouseInWorld = Camera.main.ScreenToWorldPoint(position);
-				transform.rotation = mouseInWorld.x > transform.position.x ? Quaternion.LookRotation(Vector3.left) : Quaternion.LookRotation(Vector3.right);
+				transform.rotation = mouseInWorld.x > transform.position.x ? Quaternion.LookRotation(Vector3.right) : Quaternion.LookRotation(Vector3.left);
 
 			}
 			m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_speed);
