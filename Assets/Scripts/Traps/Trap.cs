@@ -16,19 +16,18 @@ public class Trap : MonoBehaviour
 
     float timeElapsed = 0;
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
         timeElapsed += Time.deltaTime;
 
-        if(timeElapsed >= damageInterval)
+        if(timeElapsed >= damageInterval )
         {
             timeElapsed = 0;
-            collision.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
         }
-        
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
         timeElapsed = 0;
     }
