@@ -17,7 +17,11 @@ public static GameObject GetNearestGameObject(GameObject source, string tagName,
     float angleDif = Vector3.Angle(targetDir, source.transform.forward);
 
     float distance = (source.transform.position - collider.transform.position).sqrMagnitude;
-    if (collider.gameObject != source && collider.gameObject.CompareTag(tagName) && distance < nearestDistance && angleDif <= angle) { 
+
+    bool valid = true;
+    if (Physics.Raycast(source.transform.position, targetDir.normalized, out RaycastHit hit, radius)) { valid = hit.collider.gameObject.tag == tagName; }
+
+    if (valid && collider.gameObject != source && collider.gameObject.CompareTag(tagName) && distance < nearestDistance && angleDif <= angle) { 
     nearestGO = collider.gameObject;
     nearestDistance = distance;
     }

@@ -286,6 +286,71 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8855242038179672707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6340495568521116699}
+  - component: {fileID: 1585785501760071146}
+  - component: {fileID: 3072321872041354845}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6340495568521116699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855242038179672707}
+  m_LocalRotation: {x: -0.0040602214, y: 0.053468212, z: 0.03961095, w: 0.9977754}
+  m_LocalPosition: {x: -0.472, y: -0.075, z: 0.013}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2325251482429939625}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1585785501760071146
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855242038179672707}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3072321872041354845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855242038179672707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe40c63c7231e2d4a93bb8d0ed5c070b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: Claws
+  description: 
+  weaponImage: {fileID: 0}
+  damage: 10
+  attackSpeed: 0
+  ownerTag: Enemy
+  attackDelay: 3
+  WeaponCollider: {fileID: 1585785501760071146}
 --- !u!1001 &3838508225086178413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,6 +429,12 @@ GameObject:
 --- !u!4 &8088370554055487351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: def7fa90e0ac7624aad13328ac7ef597,
+    type: 3}
+  m_PrefabInstance: {fileID: 3838508225086178413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2325251482429939625 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7709620485779973180, guid: def7fa90e0ac7624aad13328ac7ef597,
     type: 3}
   m_PrefabInstance: {fileID: 3838508225086178413}
   m_PrefabAsset: {fileID: 0}

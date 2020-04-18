@@ -49,6 +49,7 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log(other.gameObject.tag);
             other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            Destroy(gameObject);
         }
     }
 }
