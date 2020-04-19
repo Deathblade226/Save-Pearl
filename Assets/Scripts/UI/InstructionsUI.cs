@@ -5,7 +5,15 @@ using UnityEngine;
 public class InstructionsUI : MonoBehaviour
 {
     [SerializeField] Canvas[] Instructions = null;
-    private int CurrentPage { get; set; } = 0;
+    private Canvas PreviousScreen = null;
+    private int CurrentPage { get; set; } = -1;
+
+    public void OpenInstructions(Canvas previousScreen)
+    {
+        PreviousScreen = previousScreen;
+        Instructions[0].enabled = true;
+        PreviousScreen.enabled = false;
+    }
 
     public void ChangePage(int pageNumber)
     {
