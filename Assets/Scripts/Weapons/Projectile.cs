@@ -47,7 +47,8 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(RB.velocity);
+
+        if(RB.velocity != Vector3.zero) transform.rotation = Quaternion.LookRotation(RB.velocity);
         transform.Rotate(-90.0f, 0.0f, 0.0f);
 
         if (ProjectileBehaviour != null)
