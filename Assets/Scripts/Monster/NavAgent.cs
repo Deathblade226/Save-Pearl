@@ -34,6 +34,7 @@ void Update() {
 
 	if (m_navAgent.isStopped && m_navAgent != null && m_navAgent.isOnNavMesh) {m_navAgent.isStopped = false;}
 	//Debug.Log("Moving");
+	animator.SetTrigger("StopAttack");
 	MoveTime = MoveCd;
 	Vector3 target = Vector3.up;
 	if (m_x && m_z) target = new Vector3(gameObject.transform.position.x + Random.Range(-searchDistance, searchDistance), 0, gameObject.transform.position.z + Random.Range(-searchDistance, searchDistance));
