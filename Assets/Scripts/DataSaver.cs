@@ -22,7 +22,7 @@ public class DataSaver
         set { difficulty = value; }
     }
 
-    private int progress;
+    private int progress = 1;
 
     public int Progress
     {

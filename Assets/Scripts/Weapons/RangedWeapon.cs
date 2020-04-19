@@ -65,6 +65,7 @@ public class RangedWeapon : Weapon
     public void OnAttackMonster() {
         var player = AIUtilities.GetNearestGameObject(gameObject, "Player", 10.0f, 90.0f);
         Projectile p = Instantiate(projectile, transform.position + transform.up * 1.5f + transform.forward, Quaternion.identity);
+        p.Damage = Damage;
         p.transform.LookAt(player.transform);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
         p.GetComponent<Rigidbody>().AddForce(transform.forward * AttackSpeed,ForceMode.VelocityChange);
