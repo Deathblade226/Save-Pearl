@@ -33,10 +33,17 @@ public class Projectile : MonoBehaviour
         set { sourceTag = value; }
     }
 
-    private void Start()
+    public float Lifetime 
     {
-
+        get => lifetime;
+        set
+        {
+            lifetime = value;
+            Destroy(this.gameObject, lifetime);
+        }
     }
+
+
 
     void Update()
     {

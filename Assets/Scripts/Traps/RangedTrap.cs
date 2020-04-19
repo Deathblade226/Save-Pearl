@@ -97,7 +97,8 @@ public class RangedTrap : MonoBehaviour
                         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
                         p.RB.AddForce(((targetPoint[0].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
                         p.Damage = Damage;
-                        Destroy(p.gameObject, 2.0f);
+                        p.Lifetime = 2;
+
                     }
                     break;
                 case eType.ARC:
@@ -108,7 +109,8 @@ public class RangedTrap : MonoBehaviour
                         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
                         p.RB.AddForce(((targetPoint[0].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
                         p.Damage = Damage;
-                        Destroy(p.gameObject, 2.0f);
+                        p.Lifetime = 2;
+
                     }
                     break;
                 case eType.BURST:
@@ -127,7 +129,7 @@ public class RangedTrap : MonoBehaviour
                             p.transform.Rotate(-90.0f, 0.0f, 0.0f);
                             p.RB.AddForce(((targetPoint[i].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
                             p.Damage = Damage;
-                            Destroy(p.gameObject, 2.0f);
+                            p.Lifetime = 2;
 
                         }
                     }
@@ -147,7 +149,8 @@ public class RangedTrap : MonoBehaviour
             p.transform.Rotate(-90.0f, 0.0f, 0.0f);
             p.RB.AddForce(((targetPoint[0].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
             p.Damage = Damage;
-            Destroy(p.gameObject, 2.0f);
+            p.Lifetime = 2;
+
             yield return new WaitForSeconds(0.1f);
         }
 

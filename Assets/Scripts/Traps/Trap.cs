@@ -14,7 +14,15 @@ public class Trap : MonoBehaviour
         set { damage = value; }
     }
 
-    float timeElapsed = 0;
+    float timeElapsed ;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag != "Untagged")
+        {
+            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
