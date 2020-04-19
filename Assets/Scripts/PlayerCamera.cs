@@ -14,6 +14,11 @@ public class PlayerCamera : MonoBehaviour
 
 	private void Update()
 	{
+		if (m_playerTransform == null) { 
+		GameObject go = AIUtilities.GetNearestGameObject(gameObject, "Player"); 
+		m_playerTransform = go.transform;
+		}
+
 
 		Vector3 newPosition = m_playerTransform.position;
 		if (newPosition.x <= m_minX) newPosition.x = m_minX; 

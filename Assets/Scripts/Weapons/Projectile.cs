@@ -42,8 +42,7 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject, lifetime);
         }
     }
-
-
+    public string OwnerTag { get => ownerTag; set => ownerTag = value; }
 
     void Update()
     {
@@ -59,10 +58,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != ownerTag && other.gameObject.tag != "Untagged")
+        if (other.gameObject.tag != OwnerTag)
         {
-            other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage);
+            Damagable damagable = other.gameObject.GetComponent<Damagable>();
+
+            if (damagable != null) { other.gameObject.GetComponent<Damagable>().ApplyDamage(Damage); 
             Destroy(gameObject);
+            }
+
         }
     }
 }

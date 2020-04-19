@@ -935,7 +935,7 @@ MonoBehaviour:
   AddWhenInUse: []
   AddWhenNotInUse: []
   socketGroup_obsolete: -1
-  socket: {fileID: 282993281645782423, guid: 64497de3e3917464085b635e197148c7, type: 2}
+  socket: {fileID: 0}
   doorPrefab: {fileID: 0}
   doorComponent: {fileID: 0}
   tile: {fileID: 0}
@@ -6530,7 +6530,7 @@ MonoBehaviour:
   AddWhenInUse: []
   AddWhenNotInUse: []
   socketGroup_obsolete: -1
-  socket: {fileID: 282993281645782423, guid: 64497de3e3917464085b635e197148c7, type: 2}
+  socket: {fileID: 0}
   doorPrefab: {fileID: 0}
   doorComponent: {fileID: 0}
   tile: {fileID: 0}
@@ -33503,7 +33503,7 @@ PrefabInstance:
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.69
+      value: 6.04
       objectReference: {fileID: 0}
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
@@ -36344,7 +36344,7 @@ PrefabInstance:
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.68
+      value: 2.62
       objectReference: {fileID: 0}
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
@@ -44975,7 +44975,7 @@ PrefabInstance:
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.07
+      value: -3.88
       objectReference: {fileID: 0}
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
@@ -46016,7 +46016,7 @@ PrefabInstance:
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.26
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 6251347982482910450, guid: 162e12afedaa825419cdc6e55507211d,
         type: 3}

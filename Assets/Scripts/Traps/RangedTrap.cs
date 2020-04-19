@@ -92,6 +92,7 @@ public class RangedTrap : MonoBehaviour
                     {
                         //spawnPoint = transform.position;
                         Projectile p = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
+                        p.OwnerTag = gameObject.tag;
                         p.RB.useGravity = false;
                         p.transform.LookAt(targetPoint[0]);
                         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
@@ -105,6 +106,7 @@ public class RangedTrap : MonoBehaviour
                     {
                         //spawnPoint = transform.position;
                         Projectile p = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
+                        p.OwnerTag = gameObject.tag;
                         p.transform.LookAt(targetPoint[0]);
                         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
                         p.RB.AddForce(((targetPoint[0].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
@@ -125,6 +127,7 @@ public class RangedTrap : MonoBehaviour
 
                             //spawnPoint = transform.position;
                             Projectile p = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
+                            p.OwnerTag = gameObject.tag;
                             p.transform.LookAt(targetPoint[i]);
                             p.transform.Rotate(-90.0f, 0.0f, 0.0f);
                             p.RB.AddForce(((targetPoint[i].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
@@ -145,6 +148,7 @@ public class RangedTrap : MonoBehaviour
         {
             //spawnPoint = transform.position;
             Projectile p = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
+            p.OwnerTag = gameObject.tag;
             p.transform.LookAt(targetPoint[0]);
             p.transform.Rotate(-90.0f, 0.0f, 0.0f);
             p.RB.AddForce(((targetPoint[0].position - spawnPoint.position) * Speed), ForceMode.VelocityChange);
