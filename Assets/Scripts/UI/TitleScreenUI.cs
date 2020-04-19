@@ -194,7 +194,7 @@ public class TitleScreenUI : MonoBehaviour
 
     public void Instructions()
     {
-        GetComponentInChildren<InstructionsUI>().ChangePage(0);
+        GetComponentInChildren<InstructionsUI>().OpenInstructions(TitleScreen);
     }
 
     IEnumerator PromptForOverwrite()
