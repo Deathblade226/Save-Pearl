@@ -51,6 +51,14 @@ public class PlayerController : MonoBehaviour
 		m_playerStats.MeleeWeapon.transform.SetParent(m_hand);
 		m_meleeRenderer = m_playerStats.MeleeWeapon.GetComponent<Renderer>();
 		m_rangedRenderer = m_playerStats.RangedWeapon.GetComponentInChildren<Renderer>();
+		if (m_playerStats.MeleeWeapon != null)
+		{
+			m_playerStats.MeleeWeapon.OwnerTag = tag;
+		}
+		if (m_playerStats.RangedWeapon != null)
+		{
+			m_playerStats.RangedWeapon.OwnerTag = tag;
+		}
 	}
 
 	void Update()

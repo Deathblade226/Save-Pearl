@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
 	private int m_strength = 5;
 	private int m_dexterity = 5;
 
-	public MeleeWeapon MeleeWeapon { get => m_meleeWeapon; set => m_meleeWeapon = value; }
-	public RangedWeapon RangedWeapon { get => m_rangedWeapon; set => m_rangedWeapon = value; }
+	public MeleeWeapon MeleeWeapon { get => m_meleeWeapon; set { m_meleeWeapon = value; m_meleeWeapon.OwnerTag = this.tag; } }
+	public RangedWeapon RangedWeapon { get => m_rangedWeapon; set { m_rangedWeapon = value; m_rangedWeapon.OwnerTag = this.tag; } }
 	public int Strength { get => m_strength; set => m_strength = value; }
 	public int Dexterity { get => m_dexterity; set => m_dexterity = value; }
 	public float JumpForce { get => m_jumpForce; set => m_jumpForce = value; }
