@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
 	[SerializeField] Damagable m_healthStats = null;
 	[SerializeField] MeleeWeapon m_meleeWeapon = null;
@@ -11,6 +11,12 @@ public class Player : MonoBehaviour
 	[SerializeField] [Range(0, 20)] float m_speed = 2.0f;
 	[SerializeField] [Range(-1, 1)] float m_armor = 0.0f;
 
+	string tag = null;
+
+	public Player(string tag)
+	{
+		this.tag = tag;
+	}
 
 	private int m_strength = 5;
 	private int m_dexterity = 5;
