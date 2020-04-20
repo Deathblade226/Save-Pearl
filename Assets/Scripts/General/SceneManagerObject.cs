@@ -13,6 +13,10 @@ public class SceneManagerObject : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(sceneName);
         }
+        else
+        {
+            Debug.LogError($"Scene name {sceneName} isn't able to be loaded from this object");
+        }
     }
 
     public void LoadSceneAsyncByIndex(int index)
@@ -28,6 +32,10 @@ public class SceneManagerObject : MonoBehaviour
         if (sceneNames.Contains(sceneName))
         {
             SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogError($"Scene name {sceneName} isn't able to be loaded from this object");
         }
     }
 
