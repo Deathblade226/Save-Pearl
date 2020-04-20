@@ -17,12 +17,20 @@ private void OnTriggerEnter(Collider other) {
     Player player = other.gameObject.GetComponent<Player>();
     if (player != null) { 
 
-    player.HealthStats.MaxHealth += constitution;
-    player.HealthStats.DamageReduction += armor;
+    if (player.HealthStats.MaxHealth + constitution < 0) { player.HealthStats.MaxHealth = 1; }
+    else { player.HealthStats.MaxHealth += constitution; }
+    
+    if (player.HealthStats.DamageReduction < 0.9f) player.HealthStats.DamageReduction += armor;
+
     player.Strength += strength;
     player.Dexterity += dexterity;
-    player.JumpForce += jump;
-    player.Speed += speed;
+    
+    if (player.JumpForce + jump < 2.25) { player.JumpForce = 2.25f; }
+    else { player.JumpForce += jump; }
+
+    if (player.Speed + speed < 1) { player.Speed = 1; }
+    else { player.Speed += speed; }
+
     Destroy(gameObject);
     }
 
