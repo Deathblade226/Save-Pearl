@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] [Range(0, 20)] float m_speed = 5.0f;
+	//[SerializeField] [Range(0, 20)] float m_speed = 2.0f;
 	[SerializeField] [Range(0, 20)] float m_currentSpeed = 0.0f;
 	[SerializeField] [Range(0, 1)] float m_acceleration = 1.0f;
 
@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] [Range(0, 1)] float m_groundDrag = 0.8f;
 	[SerializeField] [Range(0, 1)] float m_landingDragMultiplier = 1.0f;
 	[SerializeField] [Range(0, 30)] int m_numOfLandingDragFrames = 20;
-	[SerializeField] float m_jumpForce = 40.0f;
+	//[SerializeField] float m_jumpForce = 2.25f;
 	[SerializeField] float m_fallGravityMultiplier = 4.0f;
 	[SerializeField] [Range(0, 30)] int m_numOfJumpFrames = 10;
 
@@ -146,8 +146,8 @@ public class PlayerController : MonoBehaviour
 			velocity.x = Input.GetAxis("Horizontal");
 
 
-			float animSpeed = m_rb.velocity.magnitude / m_speed;
-			m_animator.SetFloat("Speed", animSpeed);
+			float animSpeed = m_rb.velocity.magnitude / m_playerStats.Speed;
+			m_animator.SetFloat("Speed", animSpeed < 0.01f ? 0.0f : animSpeed);
 
 
 			if (m_wasAirborne)
@@ -170,8 +170,8 @@ public class PlayerController : MonoBehaviour
 				m_currentSpeed = m_acceleration;
 			}
 
-			float speedMultiplier = m_speed;
-			if (m_currentSpeed < m_speed && velocity != Vector3.zero)//not up to speed, then we set the accelerate
+			float speedMultiplier = m_playerStats.Speed;
+			if (m_currentSpeed < m_playerStats.Speed && velocity != Vector3.zero)//not up to speed, then we set the accelerate
 			{
 				m_currentSpeed += m_acceleration;
 				speedMultiplier = m_currentSpeed;
@@ -180,7 +180,17 @@ public class PlayerController : MonoBehaviour
 			m_rb.AddForce(velocity * speedMultiplier * (m_groundDrag * landingMultiplier), ForceMode.VelocityChange);
 
 			if(!m_isBowDrawn && !m_isMidAttack)
-				transform.rotation = velocity != Vector3.zero ? Quaternion.LookRotation(velocity) : transform.rotation;//velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
+			{
+				if(Vector3.Dot(velocity, Vector3.right) > 0.0f)
+				{
+					transform.rotation = Quaternion.LookRotation(Vector3.right);
+				} 
+				else if(Vector3.Dot(velocity, Vector3.right) < 0.0f)
+				{
+					transform.rotation = Quaternion.LookRotation(Vector3.left);
+				}
+				 //velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
+			}
 			else if(m_isBowDrawn)
 			{
 				Vector3 position = Input.mousePosition;
@@ -189,12 +199,12 @@ public class PlayerController : MonoBehaviour
 				transform.rotation = mouseInWorld.x > transform.position.x ? Quaternion.LookRotation(Vector3.right) : Quaternion.LookRotation(Vector3.left);
 
 			}
-			m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_speed);
+			m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_playerStats.Speed);
 
 
 			if (Input.GetButtonDown("Jump"))
 			{
-				m_rb.AddRelativeForce(Vector3.up * m_jumpForce, ForceMode.VelocityChange);
+				m_rb.AddRelativeForce(Vector3.up * m_playerStats.JumpForce, ForceMode.VelocityChange);
 				m_animator.SetBool("Jump", true);
 			}
 
@@ -205,9 +215,9 @@ public class PlayerController : MonoBehaviour
 			Vector3 velocity = Vector3.zero;
 			velocity.x = Input.GetAxis("Horizontal");
 
-			m_rb.AddForce(velocity * m_speed * m_airControl, ForceMode.VelocityChange);
-			Vector3 clamped = new Vector3(m_rb.velocity.x, 0, m_rb.velocity.z);
-			clamped = Vector3.ClampMagnitude(clamped, m_speed);
+			m_rb.AddForce(velocity * m_playerStats.Speed * m_airControl, ForceMode.VelocityChange);
+			Vector3 clamped = new Vector3(m_rb.velocity.x, 0, 0);
+			clamped = Vector3.ClampMagnitude(clamped, m_playerStats.Speed);
 			clamped.y = m_rb.velocity.y;
 			m_rb.velocity = clamped;
 
@@ -227,7 +237,7 @@ public class PlayerController : MonoBehaviour
 			if (Input.GetButton("Jump") && m_jumpFrameCounter < m_numOfJumpFrames)
 			{
 				m_jumpFrameCounter++;
-				m_rb.AddRelativeForce(Vector3.up * (m_jumpForce / ((m_jumpFrameCounter * 11) - m_jumpFrameCounter * 10)), ForceMode.VelocityChange);
+				m_rb.AddRelativeForce(Vector3.up * (m_playerStats.JumpForce / ((m_jumpFrameCounter * 11) - m_jumpFrameCounter * 10)), ForceMode.VelocityChange);
 			}
 
 

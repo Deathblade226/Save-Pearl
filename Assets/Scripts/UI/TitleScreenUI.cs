@@ -152,6 +152,7 @@ public class TitleScreenUI : MonoBehaviour
     public void LoadGame()
     {
         Game.Instance.Data = SaveSystem.LoadObject<DataSaver>($"SavePearlFile{SelectedProfile + 1}GameData.gme");
+        Game.Instance.IsPlaying = true;
         Game.Instance.SceneManager.LoadSceneAsyncByName("Game");
     }
 
