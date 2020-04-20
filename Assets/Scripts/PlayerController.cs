@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
 
 			float animSpeed = m_rb.velocity.magnitude / m_playerStats.Speed;
-			m_animator.SetFloat("Speed", animSpeed);
+			m_animator.SetFloat("Speed", animSpeed < 0.01f ? 0.0f : animSpeed);
 
 
 			if (m_wasAirborne)
@@ -180,7 +180,17 @@ public class PlayerController : MonoBehaviour
 			m_rb.AddForce(velocity * speedMultiplier * (m_groundDrag * landingMultiplier), ForceMode.VelocityChange);
 
 			if(!m_isBowDrawn && !m_isMidAttack)
-				transform.rotation = velocity != Vector3.zero ? Quaternion.LookRotation(velocity) : transform.rotation;//velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
+			{
+				if(Vector3.Dot(velocity, Vector3.right) > 0.0f)
+				{
+					transform.rotation = Quaternion.LookRotation(Vector3.right);
+				} 
+				else if(Vector3.Dot(velocity, Vector3.right) < 0.0f)
+				{
+					transform.rotation = Quaternion.LookRotation(Vector3.left);
+				}
+				 //velocity == Vector3.zero ? transform.rotation : Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(velocity, Vector3.up), Time.deltaTime * m_turnRate);
+			}
 			else if(m_isBowDrawn)
 			{
 				Vector3 position = Input.mousePosition;
@@ -206,7 +216,7 @@ public class PlayerController : MonoBehaviour
 			velocity.x = Input.GetAxis("Horizontal");
 
 			m_rb.AddForce(velocity * m_playerStats.Speed * m_airControl, ForceMode.VelocityChange);
-			Vector3 clamped = new Vector3(m_rb.velocity.x, 0, m_rb.velocity.z);
+			Vector3 clamped = new Vector3(m_rb.velocity.x, 0, 0);
 			clamped = Vector3.ClampMagnitude(clamped, m_playerStats.Speed);
 			clamped.y = m_rb.velocity.y;
 			m_rb.velocity = clamped;
