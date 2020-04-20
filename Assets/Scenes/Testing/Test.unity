@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeon: {fileID: 1373918116}
-  Debug: 1
+  Debug: 0
   DebugDifficulty: 2
   Progress: 2
   difficulty:
