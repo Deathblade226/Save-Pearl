@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class AIUtilities {
 
-public static GameObject GetNearestGameObject(GameObject source, string tagName, float radius = float.MaxValue, float angle = 180.0f) { 
+public static GameObject GetNearestGameObject(GameObject source, string tagName, float radius = float.MaxValue, float angle = 180.0f, bool xray = false) { 
     GameObject nearestGO = null;
 
     Collider[] colliders =  Physics.OverlapSphere(source.transform.position, radius);
@@ -19,7 +19,7 @@ public static GameObject GetNearestGameObject(GameObject source, string tagName,
     float distance = (source.transform.position - collider.transform.position).sqrMagnitude;
 
     bool valid = true;
-    if (Physics.Raycast(source.transform.position, targetDir.normalized, out RaycastHit hit, radius)) { valid = hit.collider.gameObject.tag == tagName; }
+    if (!xray && Physics.Raycast(source.transform.position, targetDir.normalized, out RaycastHit hit, radius)) { valid = hit.collider.gameObject.tag == tagName; }
 
     if (valid && collider.gameObject != source && collider.gameObject.CompareTag(tagName) && distance < nearestDistance && angleDif <= angle) { 
     nearestGO = collider.gameObject;
