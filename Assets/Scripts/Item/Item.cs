@@ -23,7 +23,7 @@ private void OnTriggerEnter(Collider other) {
     player.Dexterity += dexterity;
     player.JumpForce += jump;
     player.Speed += speed;
-
+    Destroy(gameObject);
     }
 
     }

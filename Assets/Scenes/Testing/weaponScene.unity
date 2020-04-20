@@ -816,6 +816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4177490505188570567, guid: bbe5b5405ee28834197510149e7abd5d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7803826807040056653, guid: bbe5b5405ee28834197510149e7abd5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -940,6 +945,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elven Long Bow Arrow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9107359400156590094, guid: b3bc9d4600b7eec429a14a6fb9b8514b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3bc9d4600b7eec429a14a6fb9b8514b, type: 3}
 --- !u!114 &2900070057515388304 stripped
@@ -969,7 +979,7 @@ PrefabInstance:
     - target: {fileID: 630494173379168256, guid: 7e61ff20a47a8ec4a83f6e5b83914489,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8635592575116963455, guid: 7e61ff20a47a8ec4a83f6e5b83914489,
         type: 3}
@@ -1050,3 +1060,72 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &5932720685901948506
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5932720684230862631, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_Name
+      value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.965
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.617
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932720684230862808, guid: 0edcadb5f712f574d97393e8e7e2fd6c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0edcadb5f712f574d97393e8e7e2fd6c, type: 3}
