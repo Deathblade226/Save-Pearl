@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 	[SerializeField] [Range(0, 20)] float m_speed = 2.0f;
 	[SerializeField] [Range(-1, 1)] float m_armor = 0.0f;
 
-
 	private int m_strength = 5;
 	private int m_dexterity = 5;
 

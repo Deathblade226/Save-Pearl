@@ -25,12 +25,10 @@ public class Projectile : MonoBehaviour
         set { damage = value; }
     }
 
-    private string sourceTag;
-
     public string OwnerTag
     {
-        get { return sourceTag; }
-        set { sourceTag = value; }
+        get { return ownerTag; }
+        set { ownerTag = value; }
     }
 
     public float Lifetime 
@@ -42,7 +40,6 @@ public class Projectile : MonoBehaviour
             Destroy(this.gameObject, lifetime);
         }
     }
-    public string OwnerTag { get => ownerTag; set => ownerTag = value; }
 
     void Update()
     {
