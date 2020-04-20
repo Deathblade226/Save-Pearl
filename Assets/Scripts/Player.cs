@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 	[SerializeField] RangedWeapon m_rangedWeapon = null;
 	[SerializeField] float m_jumpForce = 2.25f;
 	[SerializeField] [Range(0, 20)] float m_speed = 2.0f;
+	[SerializeField] [Range(-1, 1)] float m_armor = 0.0f;
 
 
 	private int m_strength = 5;
@@ -20,4 +21,5 @@ public class Player : MonoBehaviour
 	public int Dexterity { get => m_dexterity; set => m_dexterity = value; }
 	public float JumpForce { get => m_jumpForce; set => m_jumpForce = value; }
 	public float Speed { get => m_speed; set => m_speed = value; }
+	public Damagable HealthStats { get => m_healthStats; set => m_healthStats = value; }
 }
