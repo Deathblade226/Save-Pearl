@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_healthStats: {fileID: 104060935318919592}
-  m_meleeWeapon: {fileID: 0}
+  m_meleeWeapon: {fileID: 5493895271205988484}
   m_rangedWeapon: {fileID: 7328133718537507777}
   m_jumpForce: 2.25
   m_speed: 2
@@ -313,6 +313,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1705703293270791700}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5493895271205988484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6599423544276352656, guid: 67b245eb189275947aa626852100905f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705703293270791700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe40c63c7231e2d4a93bb8d0ed5c070b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7686650517439545844
 PrefabInstance:
   m_ObjectHideFlags: 0
