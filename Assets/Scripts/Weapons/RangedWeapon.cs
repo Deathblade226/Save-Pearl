@@ -71,6 +71,7 @@ public class RangedWeapon : Weapon
         p.transform.LookAt(player.transform);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
         p.RB.AddForce(transform.forward * AttackSpeed,ForceMode.VelocityChange);
+        p.OwnerTag = OwnerTag;
         p.Lifetime = 2;
 
     }
