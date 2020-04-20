@@ -11,7 +11,7 @@ public class InGameUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && Game.Instance.IsPlaying && !GetComponentInChildren<InstructionsUI>().IsOpen && !Inventory.enabled)
         {
             if (isPaused)
             {
@@ -58,7 +58,12 @@ public class InGameUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        Game.Instance.gameObject.GetComponent<SceneManagerObject>().LoadSceneAsyncByName("TitleScene");
+        ResumeGame();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Game.Instance.IsPlaying = false;
+        Game.Instance.Data = null;
+        Game.Instance.gameObject.GetComponent<SceneManagerObject>().LoadSceneAsyncByName("Title Scene");
     }    
     
     public void Quit()

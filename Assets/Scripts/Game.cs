@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,5 +31,10 @@ public class Game : MonoBehaviour
             FileInfo info = new FileInfo();
             SaveSystem.SaveObject(info, "SavePearlFileInfo.info");
         }
+
+        FindObjectsOfType<Canvas>().ToList().ForEach(canvas =>
+        {
+            canvas.enabled = canvas.name == "Title Screen";
+        });
     }
 }
