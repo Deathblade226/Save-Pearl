@@ -12,7 +12,16 @@ public class Item : MonoBehaviour {
 [SerializeField] float armor = 0;
 
 private void OnTriggerEnter(Collider other) {
-        
+    if (other.gameObject.tag == "Player") { 
+
+    Player player = other.gameObject.GetComponent<Player>();
+    if (player != null) { 
+
+    
+
+    }
+
+    }
 }
 
 }
