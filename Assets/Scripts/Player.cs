@@ -20,4 +20,5 @@ public class Player : MonoBehaviour
 	public int Dexterity { get => m_dexterity; set => m_dexterity = value; }
 	public float JumpForce { get => m_jumpForce; set => m_jumpForce = value; }
 	public float Speed { get => m_speed; set => m_speed = value; }
+	public Damagable HealthStats { get => m_healthStats; set => m_healthStats = value; }
 }
