@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8360590843459262982}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae1f5347fb1665448c0a13ae2f264f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentSpeed: 0
+  m_currentSpeed: 7.6
   m_acceleration: 0.511
   m_airControl: 0.5
   m_groundDrag: 0.8
@@ -179,12 +179,11 @@ MonoBehaviour:
   m_numOfLandingDragFrames: 20
   m_fallGravityMultiplier: 1
   m_numOfJumpFrames: 10
-  m_cameraTransform: {fileID: 0}
   m_groundStart: {fileID: 8360590842921446956}
   m_groundEnd: {fileID: 8360590842991940309}
   m_groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 51
   m_hand: {fileID: 4752908500063990072}
   m_playerStats: {fileID: 6096774661046867122}
 --- !u!114 &6096774661046867122
@@ -200,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_healthStats: {fileID: 104060935318919592}
-  m_meleeWeapon: {fileID: 0}
+  m_meleeWeapon: {fileID: 5493895271205988484}
   m_rangedWeapon: {fileID: 7328133718537507777}
   m_jumpForce: 2.25
   m_speed: 2
@@ -314,6 +313,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1705703293270791700}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5493895271205988484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6599423544276352656, guid: 67b245eb189275947aa626852100905f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1705703293270791700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe40c63c7231e2d4a93bb8d0ed5c070b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7686650517439545844
 PrefabInstance:
   m_ObjectHideFlags: 0

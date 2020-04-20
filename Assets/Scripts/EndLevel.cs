@@ -7,7 +7,7 @@ public class EndLevel : MonoBehaviour {
 [SerializeField] float range = 5.0f;
 [SerializeField] bool Debug = false;
 private void Update() {
-    GameObject player = AIUtilities.GetNearestGameObject(gameObject, "Player", range);
+    GameObject player = AIUtilities.GetNearestGameObject(gameObject, "Player", range, 180.0f, true);
     if (player != null) { 
     Game.Instance.Data.Progress++;
     SceneManager.LoadScene("Game");

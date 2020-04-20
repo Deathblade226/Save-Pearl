@@ -470,7 +470,7 @@ MonoBehaviour:
   weaponImage: {fileID: 0}
   damage: 5
   attackSpeed: 30
-  ownerTag: 
+  ownerTag: Enemy
   attackDelay: 5
   projectile: {fileID: 2591774643144995035, guid: b3bc9d4600b7eec429a14a6fb9b8514b,
     type: 3}
@@ -1158,7 +1158,7 @@ PrefabInstance:
     - target: {fileID: 3467012292994120668, guid: bc2b377e3fa9f404fb5906c0412a4779,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3607379475625868295, guid: bc2b377e3fa9f404fb5906c0412a4779,
         type: 3}
@@ -1781,7 +1781,7 @@ PrefabInstance:
     - target: {fileID: 4732002540494673960, guid: 5f870793577d16f4193800d14b8fd8b9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f870793577d16f4193800d14b8fd8b9, type: 3}

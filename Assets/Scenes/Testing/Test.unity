@@ -334,7 +334,7 @@ MonoBehaviour:
   dungeon: {fileID: 1373918116}
   Debug: 1
   DebugDifficulty: 2
-  Progress: 2
+  Progress: 1
   difficulty:
   - {fileID: 11400000, guid: 18e49d346b40d4f40a89bc64e67d2030, type: 2}
   - {fileID: 11400000, guid: ac09f1e2db523524081d6d8c20492745, type: 2}

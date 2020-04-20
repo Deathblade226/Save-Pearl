@@ -21,7 +21,7 @@ public class InstructionsUI : MonoBehaviour
 
     public void ChangePage(int pageNumber)
     {
-        if (pageNumber != CurrentPage)
+        if (pageNumber != CurrentPage && this.IsOpen)
         {
             Instructions[pageNumber].enabled = true;
             Instructions[CurrentPage].enabled = false;
