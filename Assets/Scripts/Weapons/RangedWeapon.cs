@@ -60,6 +60,7 @@ public class RangedWeapon : Weapon
         p.transform.LookAt(targetPoint);
         p.transform.Rotate(-90.0f, 0.0f, 0.0f);
         p.RB.AddForce(((targetPoint - spawnPoint) * Speed),ForceMode.VelocityChange);
+        p.OwnerTag = OwnerTag;
         p.Damage = Damage * (dexterity * 0.5f);
         //Destroy(p.gameObject, 2.0f);
         p.Lifetime = 2;
