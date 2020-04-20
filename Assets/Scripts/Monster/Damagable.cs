@@ -8,8 +8,12 @@ public class Damagable : MonoBehaviour {
 [SerializeField] Damage m_damage = null;
 [SerializeField] [Range(-1,1)]float m_damageReduction = 0;
 
+public float MaxHealth { get => MaxHealth; set => MaxHealth = value; }
 public float health { get => m_health; set => m_health = value; }
 public bool destroyed { get; set; } = false;
+
+private void Start() { MaxHealth = health; }
+
 public void ApplyDamage(float damageAmount) {
 	health = health - (damageAmount - (damageAmount*m_damageReduction));
 	if (!destroyed && health <= 0) {
