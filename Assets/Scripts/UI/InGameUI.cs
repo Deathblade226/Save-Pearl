@@ -5,7 +5,7 @@ using UnityEngine;
 public class InGameUI : MonoBehaviour
 {
     private bool isPaused;
-    //[SerializeField] Player player;
+    [SerializeField] Player player;
     [SerializeField] Canvas PauseMenu = null;
     [SerializeField] Canvas Inventory = null;
 
@@ -26,7 +26,6 @@ public class InGameUI : MonoBehaviour
     public void PauseGame()
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         PauseMenu.enabled = true;
         Time.timeScale = 0f;
         isPaused = true;
@@ -34,8 +33,7 @@ public class InGameUI : MonoBehaviour
 
     public void ResumeGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.enabled = false;
         Time.timeScale = 1f;
         isPaused = false;
@@ -43,31 +41,37 @@ public class InGameUI : MonoBehaviour
 
     public void OpenInventory()
     {
-        Inventory.enabled = true;
+        Inventory.enabled = true && isPaused;
     }
 
     public void CloseInventory()
     {
-        Inventory.enabled = false;
+        Inventory.enabled = false && isPaused;
     }
 
     public void OpenInstructions()
     {
-        GetComponentInChildren<InstructionsUI>().OpenInstructions(PauseMenu);
+        if (isPaused)
+        {
+            GetComponentInChildren<InstructionsUI>().OpenInstructions(PauseMenu);
+        }
     }
 
     public void ReturnToMenu()
     {
-        ResumeGame();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Game.Instance.IsPlaying = false;
-        Game.Instance.Data = null;
-        Game.Instance.gameObject.GetComponent<SceneManagerObject>().LoadSceneAsyncByName("Title Scene");
-    }    
-    
+        if (isPaused)
+        {
+            ResumeGame();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Game.Instance.IsPlaying = false;
+            Game.Instance.Data = null;
+            Game.Instance.gameObject.GetComponent<SceneManagerObject>().LoadSceneAsyncByName("Title Scene");
+        }
+    }
+
     public void Quit()
     {
-        Game.Instance.gameObject.GetComponent<SceneManagerObject>().ExitGame();
+        if(isPaused) Game.Instance.gameObject.GetComponent<SceneManagerObject>().ExitGame();
     }
 }

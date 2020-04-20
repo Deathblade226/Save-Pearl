@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
 
     private string sourceTag;
 
-    public string SourceTag
+    public string OwnerTag
     {
         get { return sourceTag; }
         set { sourceTag = value; }
