@@ -18,17 +18,27 @@ public class FileInfo
     {
         get { return difficulties; }
         set { difficulties = value; }
-    }    
+    }
 
-    public FileInfo(string[] names, int[] difficulties)
+    private int[] progresses;
+
+    public int[] Progresses
+    {
+        get { return progresses; }
+        set { progresses = value; }
+    }
+
+    public FileInfo(string[] names, int[] difficulties, int[] progresses)
     {
         Names = names;
         Difficulties = difficulties;
+        Progresses = progresses;
     }
 
     public FileInfo()
     {
         Difficulties = new int[3] { -1,-1,-1 };
         Names = new string[3] { "New File", "New File", "New File" };
+        Progresses = new int[3] { 0, 0, 0 };
     }
 }

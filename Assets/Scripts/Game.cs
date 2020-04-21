@@ -13,6 +13,7 @@ public class Game : MonoBehaviour
     public DataSaver Data { get; set; }
     public SceneManagerObject SceneManager { get; set; }
     public bool IsPlaying { get; set; }
+    public int FileNumber { get; set; }
     private void Awake()
     {
         if (Instance == null)
