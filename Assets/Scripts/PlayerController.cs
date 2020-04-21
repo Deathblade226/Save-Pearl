@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
 
 	Renderer m_meleeRenderer = null;
 	Renderer m_rangedRenderer = null;
-	[SerializeField] Transform m_hand = null;
+	[SerializeField] Transform m_rightHand = null;
+	[SerializeField] Transform m_leftHand = null;
 
 	[SerializeField] Player m_playerStats = null;
+	[SerializeField] WeaponHolder m_weapons = null;
 
 	public Player PlayerStats { get; }
 
@@ -49,8 +51,10 @@ public class PlayerController : MonoBehaviour
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
 		m_playerStats = new Player(tag.ToString());
-		m_playerStats.MeleeWeapon.transform.SetParent(m_hand);
-		m_meleeRenderer = m_playerStats.MeleeWeapon.GetComponent<Renderer>();
+		m_playerStats.MeleeWeapon = Instantiate((MeleeWeapon)m_weapons.weapons[m_playerStats.m_meleeWeaponIndex], m_rightHand);
+		m_playerStats.RangedWeapon = Instantiate((RangedWeapon)m_weapons.weapons[m_playerStats.m_rangedWeaponIndex], m_leftHand);
+		//m_playerStats.MeleeWeapon.transform.SetParent(m_hand);
+		m_meleeRenderer = m_playerStats.MeleeWeapon.GetComponentInChildren<Renderer>();
 		m_rangedRenderer = m_playerStats.RangedWeapon.GetComponentInChildren<Renderer>();
 		if (m_playerStats.MeleeWeapon != null)
 		{
@@ -60,11 +64,18 @@ public class PlayerController : MonoBehaviour
 		{
 			m_playerStats.RangedWeapon.OwnerTag = tag;
 		}
+		if(m_playerStats.HealthStats == null)
+		{
+			m_playerStats.HealthStats = new Damagable();
+			m_playerStats.HealthStats.health = m_playerStats.m_health;
+			m_playerStats.HealthStats.DamageReduction = m_playerStats.m_damageReduction;
+		}
 	}
 
 	void Update()
 	{
-
+		m_playerStats.m_health = m_playerStats.HealthStats.health;
+		m_playerStats.m_damageReduction = m_playerStats.HealthStats.DamageReduction;
 		
 		Attack();
 
