@@ -183,7 +183,8 @@ MonoBehaviour:
     m_Bits: 51
   m_rightHand: {fileID: 4752908500063990072}
   m_leftHand: {fileID: 4283820493261924743}
-  m_weapons: {fileID: 0}
+  m_weapons: {fileID: 5704656710236726562, guid: ae96892ab5476244c9778141fdc77a7a,
+    type: 3}
 --- !u!114 &104060935318919592
 MonoBehaviour:
   m_ObjectHideFlags: 0
