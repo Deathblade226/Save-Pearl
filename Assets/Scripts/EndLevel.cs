@@ -15,7 +15,7 @@ private void Update() {
     SaveSystem.SaveObject(Game.Instance.Data, $"SavePearlFile{Game.Instance.FileNumber + 1}GameData.gme");
 
     FileInfo file = SaveSystem.LoadObject<FileInfo>("SavePearlFileInfo.info");
-    FileInfo.Progresses[Game.Instance.FileNumber] = Game.Instance.Data.Progress;
+    file.Progresses[Game.Instance.FileNumber] = Game.Instance.Data.Progress;
     SaveSystem.SaveObject<FileInfo>(file, "SavePearlFileInfo.info");
 
     SceneManager.LoadScene("Game");
