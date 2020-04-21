@@ -22,10 +22,7 @@ public class MeleeWeapon : Weapon
     }
     private void Update()
     {
-        if (Timer < AttackSpeed + AttackDelay)
-        {
-            Timer += 0.025f;
-        }
+        
     }
 
     override public void OnAttack(int strength, int dexterity)

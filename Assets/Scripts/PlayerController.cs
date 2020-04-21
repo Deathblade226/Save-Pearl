@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
 		{
 			m_meleeRenderer.enabled = true;
 			m_rangedRenderer.enabled = false;
+			//Debug.Log(m_playerStats.MeleeWeapon.timer);
 			if (Input.GetMouseButton(0))
 			{
 				if (m_playerStats.MeleeWeapon.canAttack)
@@ -126,6 +127,10 @@ public class PlayerController : MonoBehaviour
 			if (!Input.GetMouseButton(0))
 			{
 				m_animator.SetBool("MeleeWeapon", false);
+				if (m_playerStats.MeleeWeapon.Timer < m_playerStats.MeleeWeapon.AttackSpeed + m_playerStats.MeleeWeapon.AttackDelay)
+				{
+					m_playerStats.MeleeWeapon.Timer += 0.025f;
+				}
 			}
 		}
 		else if (m_weaponNumber == 1)
@@ -145,7 +150,7 @@ public class PlayerController : MonoBehaviour
 			{
 				if(rangedDelayTimer > m_playerStats.RangedWeapon.AttackDelay)
 				{
-					Debug.Log(m_isBowDrawn);
+					//Debug.Log(m_isBowDrawn);
 					m_animator.SetBool("RangeWeapon", true);
 					m_isMidAttack = true;
 					rangedDelayTimer = 0.0f;
