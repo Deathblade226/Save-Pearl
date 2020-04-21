@@ -23,7 +23,7 @@ public class InGameUI : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && Game.Instance.IsPlaying && !GetComponentInChildren<InstructionsUI>().IsOpen && !Inventory.enabled)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && Game.Instance.IsPlaying && !GetComponentInChildren<InstructionsUI>().IsOpen && !Inventory.enabled && !OverwritePopup.enabled)
         {
             if (isPaused)
             {
@@ -80,7 +80,7 @@ public class InGameUI : MonoBehaviour
     public void Quit()
     {
 
-        if(isPaused) StartCoroutine("PromptForMenuOrQuit", "Menu");
+        if(isPaused) StartCoroutine("PromptForMenuOrQuit", "Quit");
     }
 
     IEnumerator PromptForMenuOrQuit(string quitOrMenu)
