@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InGameUI : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class InGameUI : MonoBehaviour
     [SerializeField] Canvas PauseMenu = null;
     [SerializeField] Canvas Inventory = null;
     [SerializeField] Canvas OverwritePopup = null;
+    ScrollView Items = null;
+    List<Slider> Stats = null;
 
     bool choice = false;
     public bool Choice
@@ -19,6 +23,12 @@ public class InGameUI : MonoBehaviour
             choice = value;
             OverwritePopup.enabled = false;
         }
+    }
+
+    private void Start()
+    {
+        //Items = GetComponentInChildren<ScrollView>();
+        //Stats = GetComponentsInChildren<Slider>().Where(Slider => Slider.name.Contains("Stat")).ToList();
     }
 
     private void Update()
@@ -37,7 +47,7 @@ public class InGameUI : MonoBehaviour
     }
     public void PauseGame()
     {
-        Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
         PauseMenu.enabled = true;
         Time.timeScale = 0f;
         isPaused = true;
@@ -45,7 +55,7 @@ public class InGameUI : MonoBehaviour
 
     public void ResumeGame()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         PauseMenu.enabled = false;
         Time.timeScale = 1f;
         isPaused = false;
@@ -53,6 +63,30 @@ public class InGameUI : MonoBehaviour
 
     public void OpenInventory()
     {
+        //foreach(Slider slider in Stats)
+        //{
+        //    switch(slider.name)
+        //    {
+        //        case "Health":
+        //            slider.value = player.m_health;
+        //            break;
+        //        case "Strength":
+        //            slider.value = player.Strength;
+        //            break;
+        //        case "Dexerity":
+        //            slider.value = player.Dexterity;
+        //            break;
+        //        case "Jump":
+        //            slider.value = player.JumpForce;
+        //            break;
+        //        case "Speed":
+        //            slider.value = player.Speed;
+        //            break;
+        //        case "Armor":
+        //            slider.value = player.m_damageReduction;
+        //            break;
+        //    }
+        //}
         Inventory.enabled = true && isPaused;
     }
 
@@ -96,7 +130,7 @@ public class InGameUI : MonoBehaviour
             if (quitOrMenu == "Menu")
             {
                 ResumeGame();
-                Cursor.lockState = CursorLockMode.None;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
                 Game.Instance.IsPlaying = false;
                 Game.Instance.Data = null;
                 Game.Instance.gameObject.GetComponent<SceneManagerObject>().LoadSceneAsyncByName("Title Scene");
