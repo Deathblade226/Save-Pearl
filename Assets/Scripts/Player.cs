@@ -5,8 +5,13 @@ using UnityEngine;
 public class Player
 {
 	[SerializeField] Damagable m_healthStats = null;
+	public float m_health = 100;
+	public float m_damageReduction = 0;
+
 	[SerializeField] MeleeWeapon m_meleeWeapon = null;
 	[SerializeField] RangedWeapon m_rangedWeapon = null;
+	public int m_meleeWeaponIndex = 0;
+	public int m_rangedWeaponIndex = 2;
 	[SerializeField] float m_jumpForce = 2.25f;
 	[SerializeField] [Range(0, 20)] float m_speed = 2.0f;
 	[SerializeField] [Range(-1, 1)] float m_armor = 0.0f;
