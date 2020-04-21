@@ -11651,7 +11651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e271c2d066652549b83009941afad3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   PauseMenu: {fileID: 2134428273}
   Inventory: {fileID: 1959111743}
 --- !u!1 &1538730473
