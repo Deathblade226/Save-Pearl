@@ -10,14 +10,14 @@ public class LootPickup : MonoBehaviour {
 private int index = 0;
 
 private void Start() {
-    index = Random.Range(0, m_weapons.weapons.Count + 1);
+    index = Random.Range(0, m_weapons.weapons.Count);
     loot = Instantiate(m_weapons.weapons[index], gameObject.transform);
 }
 private void OnTriggerEnter(Collider other) {
         
     PlayerController player = other.GetComponent<PlayerController>();
 
-    if (player != null && player.PlayerStats != null) { 
+    if (player != null) { 
 
     if (loot.GetComponent<MeleeWeapon>() != null) { 
 
@@ -26,9 +26,13 @@ private void OnTriggerEnter(Collider other) {
     index = newIndex;
     
     Weapon newWeapon = player.PlayerStats.MeleeWeapon;
-    player.PlayerStats.MeleeWeapon = (MeleeWeapon)loot;
-    loot = newWeapon;
-    
+    Weapon oldLoot = loot;
+    Destroy(player.PlayerStats.MeleeWeapon.gameObject);
+    Destroy(loot.gameObject);
+    player.PlayerStats.MeleeWeapon = Instantiate((MeleeWeapon)oldLoot, player.LeftHand);
+    loot = Instantiate(newWeapon, gameObject.transform);
+    player.m_meleeRenderer = player.PlayerStats.MeleeWeapon.GetComponentInChildren<Renderer>();
+
     } else if (loot.GetComponent<RangedWeapon>() != null) { 
 
     int newIndex = player.PlayerStats.m_rangedWeaponIndex;
@@ -36,9 +40,12 @@ private void OnTriggerEnter(Collider other) {
     index = newIndex;
     
     Weapon newWeapon = player.PlayerStats.RangedWeapon;
-    player.PlayerStats.RangedWeapon = (RangedWeapon)loot;
-    loot = newWeapon;
-
+    Weapon oldLoot = loot;
+    Destroy(player.PlayerStats.RangedWeapon.gameObject);
+    Destroy(loot.gameObject);
+    player.PlayerStats.RangedWeapon = Instantiate((RangedWeapon)oldLoot, player.LeftHand);
+    loot = Instantiate(newWeapon, gameObject.transform);
+	player.m_rangedRenderer = player.PlayerStats.RangedWeapon.GetComponentInChildren<Renderer>();
 
     } else { Debug.Log("This item isnt a weapon"); }
 

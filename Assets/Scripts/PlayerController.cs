@@ -20,15 +20,18 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Transform m_groundEnd = null;
 	[SerializeField] LayerMask m_groundLayer = 0;
 
-	Renderer m_meleeRenderer = null;
-	Renderer m_rangedRenderer = null;
+	public Renderer m_meleeRenderer = null;
+	public Renderer m_rangedRenderer = null;
 	[SerializeField] Transform m_rightHand = null;
 	[SerializeField] Transform m_leftHand = null;
 
 	[SerializeField] Player m_playerStats = null;
 	[SerializeField] WeaponHolder m_weapons = null;
 
-	public Player PlayerStats { get; }
+	public Player PlayerStats { get { return m_playerStats; } }
+
+	public Transform RightHand { get => m_rightHand; set => m_rightHand = value; }
+	public Transform LeftHand { get => m_leftHand; set => m_leftHand = value; }
 
 	Animator m_animator = null;
 	Rigidbody m_rb = null;
@@ -49,8 +52,8 @@ public class PlayerController : MonoBehaviour
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
 		m_playerStats = Game.Instance.Data.Player;
-		m_playerStats.MeleeWeapon = Instantiate((MeleeWeapon)m_weapons.weapons[m_playerStats.m_meleeWeaponIndex], m_rightHand);
-		m_playerStats.RangedWeapon = Instantiate((RangedWeapon)m_weapons.weapons[m_playerStats.m_rangedWeaponIndex], m_leftHand);
+		m_playerStats.MeleeWeapon = Instantiate((MeleeWeapon)m_weapons.weapons[m_playerStats.m_meleeWeaponIndex], RightHand);
+		m_playerStats.RangedWeapon = Instantiate((RangedWeapon)m_weapons.weapons[m_playerStats.m_rangedWeaponIndex], LeftHand);
 		//m_playerStats.MeleeWeapon.transform.SetParent(m_hand);
 		m_meleeRenderer = m_playerStats.MeleeWeapon.GetComponentInChildren<Renderer>();
 		m_rangedRenderer = m_playerStats.RangedWeapon.GetComponentInChildren<Renderer>();
