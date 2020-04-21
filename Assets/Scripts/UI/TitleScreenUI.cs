@@ -176,7 +176,7 @@ public class TitleScreenUI : MonoBehaviour
         FileInfo.Names[profileNumber] = characterName;
         FileInfo.Difficulties[profileNumber] = difficulty;
         SaveSystem.SaveObject(FileInfo, "SavePearlFileInfo.info");
-        DataSaver data = new DataSaver(CharacterName, difficulty);
+        DataSaver data = new DataSaver(CharacterName, difficulty, new Player());
         SaveSystem.SaveObject(data, $"SavePearlFile{profileNumber + 1}GameData.gme");
         Game.Instance.Data = data;
         StartNewGame();

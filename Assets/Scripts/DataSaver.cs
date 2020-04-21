@@ -30,23 +30,25 @@ public class DataSaver
         set { progress = value; }
     }
 
-    //private Player player;
+    private Player player;
 
-    //public int Player
-    //{
-    //    get { return player; }
-    //    set { player = value; }
-    //}
+    public Player Player
+    {
+        get { return player; }
+        set { player = value; }
+    }
 
-    public DataSaver(string name, int difficulty)
+    public DataSaver(string name, int difficulty, Player player)
     {
         Name = name;
         Difficulty = difficulty;
+        Player = player;
     }
 
     public DataSaver()
     {
         Name = "New File";
         Difficulty = -1;
+        Player = new Player();
     }
 }
