@@ -50,7 +50,7 @@ MonoBehaviour:
   damage: 5
   attackSpeed: 5
   ownerTag: Untagged
-  attackDelay: 3
+  attackDelay: 0.25
   projectile: {fileID: 2591774643144995035, guid: b3bc9d4600b7eec429a14a6fb9b8514b,
     type: 3}
 --- !u!1001 &7211628351969868476

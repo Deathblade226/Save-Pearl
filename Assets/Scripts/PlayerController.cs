@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 	bool m_isBowDrawn = false;
 	bool m_isMidAttack = false;
 
+	float rangedDelayTimer = 0.5f;
 
 	void Start()
 	{
@@ -128,17 +129,31 @@ public class PlayerController : MonoBehaviour
 		{
 			m_meleeRenderer.enabled = false;
 			m_rangedRenderer.enabled = true;
-			if (Input.GetMouseButton(0) && !m_isMidAttack)
-			{
-				m_animator.SetBool("RangeWeapon", true);
-				m_isMidAttack = true;
-			}
+			//Debug.Log(m_animator.GetCurrentAnimatorStateInfo(1).IsName("Standing Aim Overdraw"));
+			
 			if (!Input.GetMouseButton(0) && m_isBowDrawn)
 			{
 				m_playerStats.RangedWeapon.OnAttack(m_playerStats.Strength, m_playerStats.Dexterity);
 				m_animator.SetBool("RangeWeapon", false);
+				
 				AttackFinished();
 			}
+			if (Input.GetMouseButton(0) && !m_isMidAttack)
+			{
+				if(rangedDelayTimer > m_playerStats.RangedWeapon.AttackDelay)
+				{
+					Debug.Log(m_isBowDrawn);
+					m_animator.SetBool("RangeWeapon", true);
+					m_isMidAttack = true;
+					rangedDelayTimer = 0.0f;
+				}
+				else
+				{
+					rangedDelayTimer += Time.deltaTime;
+				}
+				
+			}
+			
 		}
 
 
