@@ -180,7 +180,7 @@ MonoBehaviour:
   m_groundEnd: {fileID: 8360590842991940309}
   m_groundLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 51
   m_rightHand: {fileID: 4752908500063990072}
   m_leftHand: {fileID: 4283820493261924743}
   m_weapons: {fileID: 0}

@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 		}
 		if(m_playerStats.HealthStats == null)
 		{
-			m_playerStats.HealthStats = new Damagable();
+			m_playerStats.HealthStats = GetComponent<Damagable>();
 			m_playerStats.HealthStats.health = m_playerStats.m_health;
 			m_playerStats.HealthStats.DamageReduction = m_playerStats.m_damageReduction;
 		}
