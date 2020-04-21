@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 	{
 		m_rb = GetComponent<Rigidbody>();
 		m_animator = GetComponentInChildren<Animator>();
-		m_playerStats = new Player(tag.ToString());
+		m_playerStats = Game.Instance.Data.Player;
 		m_playerStats.MeleeWeapon = Instantiate((MeleeWeapon)m_weapons.weapons[m_playerStats.m_meleeWeaponIndex], m_rightHand);
 		m_playerStats.RangedWeapon = Instantiate((RangedWeapon)m_weapons.weapons[m_playerStats.m_rangedWeaponIndex], m_leftHand);
 		//m_playerStats.MeleeWeapon.transform.SetParent(m_hand);
