@@ -8,21 +8,23 @@ public class MeleeWeapon : Weapon
 
     [SerializeField] Collider WeaponCollider = null;
 
-    private float timer = 0;
+    public float timer = 0.0f;
 
     private int playerStrength = 0;
 
-    public bool canAttack { get { return timer >= AttackSpeed + AttackDelay; } }
+    public bool canAttack { get { return Timer >= (AttackSpeed + AttackDelay); } }
+
+    public float Timer { get => timer; set => timer = value; }
 
     private void Start()
     {
-        timer = AttackSpeed + AttackDelay;
+        Timer = AttackSpeed + AttackDelay;
     }
     private void Update()
     {
-        if (timer < AttackSpeed + AttackDelay)
+        if (Timer < AttackSpeed + AttackDelay)
         {
-            timer += Time.deltaTime;
+            Timer += 0.025f;
         }
     }
 
@@ -30,7 +32,7 @@ public class MeleeWeapon : Weapon
     {
         if (canAttack)
         {
-            timer = 0;
+            Timer = 0;
             playerStrength = strength;
             WeaponCollider.enabled = true;
             StartCoroutine("Attacking");

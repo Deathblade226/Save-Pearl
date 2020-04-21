@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 				}
 				else
 				{
-					rangedDelayTimer += Time.deltaTime;
+					rangedDelayTimer += 0.4f;
 				}
 				
 			}

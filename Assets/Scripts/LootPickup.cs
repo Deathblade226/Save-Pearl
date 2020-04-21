@@ -12,6 +12,7 @@ private int index = 0;
 private void Start() {
     index = Random.Range(0, m_weapons.weapons.Count);
     loot = Instantiate(m_weapons.weapons[index], gameObject.transform);
+    if (loot.GetComponent<MeleeWeapon>() != null) { loot.GetComponent<MeleeWeapon>().Timer = loot.AttackSpeed + loot.AttackDelay; }
 }
 private void OnTriggerEnter(Collider other) {
         
@@ -29,7 +30,8 @@ private void OnTriggerEnter(Collider other) {
     Weapon oldLoot = loot;
     Destroy(player.PlayerStats.MeleeWeapon.gameObject);
     Destroy(loot.gameObject);
-    player.PlayerStats.MeleeWeapon = Instantiate((MeleeWeapon)oldLoot, player.LeftHand);
+    player.PlayerStats.MeleeWeapon = Instantiate((MeleeWeapon)oldLoot, player.RightHand);
+    player.PlayerStats.MeleeWeapon.OwnerTag = player.tag;
     loot = Instantiate(newWeapon, gameObject.transform);
     player.m_meleeRenderer = player.PlayerStats.MeleeWeapon.GetComponentInChildren<Renderer>();
 
@@ -44,6 +46,7 @@ private void OnTriggerEnter(Collider other) {
     Destroy(player.PlayerStats.RangedWeapon.gameObject);
     Destroy(loot.gameObject);
     player.PlayerStats.RangedWeapon = Instantiate((RangedWeapon)oldLoot, player.LeftHand);
+    player.PlayerStats.RangedWeapon.OwnerTag = player.tag;
     loot = Instantiate(newWeapon, gameObject.transform);
 	player.m_rangedRenderer = player.PlayerStats.RangedWeapon.GetComponentInChildren<Renderer>();
 
