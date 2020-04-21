@@ -30,9 +30,6 @@ public class PlayerController : MonoBehaviour
 
 	public Player PlayerStats { get; }
 
-
-
-
 	Animator m_animator = null;
 	Rigidbody m_rb = null;
 

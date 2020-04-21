@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponHolder : MonoBehaviour
-{
-    public List<Weapon> weapons = null;
+public class WeaponHolder : MonoBehaviour {
+
+public List<Weapon> weapons = null;
+
 }

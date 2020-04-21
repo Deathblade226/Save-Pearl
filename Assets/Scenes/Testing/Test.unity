@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 1373918116}
   - component: {fileID: 1373918115}
   - component: {fileID: 1373918118}
+  - component: {fileID: 1373918119}
   m_Layer: 0
   m_Name: Dungeon
   m_TagString: Untagged
@@ -339,6 +340,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18e49d346b40d4f40a89bc64e67d2030, type: 2}
   - {fileID: 11400000, guid: ac09f1e2db523524081d6d8c20492745, type: 2}
   - {fileID: 11400000, guid: bbb79f0c4f0bfe8488310855d2d0817c, type: 2}
+--- !u!114 &1373918119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373918114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659c9970d193f4747baae0244080a4c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 1991882591153187785, guid: 2a425ec8c946d4a428071e2fc34a3a54, type: 3}
+  - {fileID: 1991882591153187785, guid: 2a425ec8c946d4a428071e2fc34a3a54, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1089507317293191733, guid: 62c30bfb7f8a77a4eae934df4417deae, type: 3}
+  - {fileID: 8379146726076295798, guid: 6cf4c630a2ee50a49a01cba3dd9440e1, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1416595580
 GameObject:
   m_ObjectHideFlags: 0
