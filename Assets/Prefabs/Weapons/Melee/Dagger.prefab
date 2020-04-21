@@ -110,8 +110,9 @@ MonoBehaviour:
   weaponName: Dagger
   description: Basic Dagger
   weaponImage: {fileID: 0}
-  damage: 17
+  damage: 50
   attackSpeed: 0.8
   ownerTag: 
   attackDelay: 0.3
   WeaponCollider: {fileID: 5203670775937983131}
+  timer: 0

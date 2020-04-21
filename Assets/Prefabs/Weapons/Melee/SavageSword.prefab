@@ -96,11 +96,12 @@ MonoBehaviour:
   weaponName: Savage Sword
   description: the sword looks savage. gotta problem?
   weaponImage: {fileID: 0}
-  damage: 15
+  damage: 50
   attackSpeed: 0.8
   ownerTag: 
   attackDelay: 0.3
   WeaponCollider: {fileID: 1067637284524794405}
+  timer: 0
 --- !u!136 &1067637284524794405
 CapsuleCollider:
   m_ObjectHideFlags: 0

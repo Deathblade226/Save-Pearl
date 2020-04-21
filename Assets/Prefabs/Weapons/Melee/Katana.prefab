@@ -126,8 +126,9 @@ MonoBehaviour:
   weaponName: Katana
   description: a japanese katana
   weaponImage: {fileID: 0}
-  damage: 20
+  damage: 50
   attackSpeed: 0.8
   ownerTag: 
   attackDelay: 0.3
   WeaponCollider: {fileID: 8127488635491733194}
+  timer: 0

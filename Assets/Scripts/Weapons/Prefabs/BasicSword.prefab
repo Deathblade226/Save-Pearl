@@ -47,11 +47,12 @@ MonoBehaviour:
   weaponName: Sword
   description: Is a sword
   weaponImage: {fileID: 0}
-  damage: 10
+  damage: 50
   attackSpeed: 0.8
   ownerTag: 
   attackDelay: 0.3
   WeaponCollider: {fileID: 2753815068356408843}
+  timer: 0
 --- !u!136 &2753815068356408843
 CapsuleCollider:
   m_ObjectHideFlags: 0

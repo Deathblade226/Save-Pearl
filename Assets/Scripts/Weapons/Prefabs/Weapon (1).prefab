@@ -47,7 +47,7 @@ MonoBehaviour:
   weaponName: ElvenBow
   description: it is a bow. made by elves.
   weaponImage: {fileID: 21300000, guid: f882fc9cd8e50034aa35d1fef93d96a0, type: 3}
-  damage: 5
+  damage: 50
   attackSpeed: 5
   ownerTag: 
   attackDelay: 3

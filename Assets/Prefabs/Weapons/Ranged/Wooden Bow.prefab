@@ -99,7 +99,7 @@ MonoBehaviour:
   weaponName: recurve Bow
   description: a simple recurve
   weaponImage: {fileID: 0}
-  damage: 10
+  damage: 50
   attackSpeed: 4
   ownerTag: 
   attackDelay: 2

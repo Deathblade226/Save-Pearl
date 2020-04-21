@@ -80,7 +80,7 @@ public class InGameUI : MonoBehaviour
     public void Quit()
     {
 
-        if(isPaused) StartCoroutine("PromptForMenuOrQuit", "Menu");
+        if(isPaused) StartCoroutine("PromptForMenuOrQuit", "Quit");
     }
 
     IEnumerator PromptForMenuOrQuit(string quitOrMenu)

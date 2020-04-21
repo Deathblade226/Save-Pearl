@@ -47,7 +47,7 @@ MonoBehaviour:
   weaponName: Better Bow
   description: it is a bow. that is better
   weaponImage: {fileID: 0}
-  damage: 7
+  damage: 50
   attackSpeed: 4
   ownerTag: 
   attackDelay: 2
