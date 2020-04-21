@@ -11,7 +11,7 @@ private void Update() {
     if (player != null) {
     
     Game.Instance.Data.Progress++;
-    SaveSystem.SaveObject(Game.Instance.Data, $"SavePearlFile{Game.Instance.FileNumber + 1}GameData.gme");
+    //SaveSystem.SaveObject(Game.Instance.Data, $"SavePearlFile{Game.Instance.FileNumber + 1}GameData.gme");
     SceneManager.LoadScene("Game");
     }    
 }
