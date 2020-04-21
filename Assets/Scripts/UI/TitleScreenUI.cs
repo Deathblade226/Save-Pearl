@@ -116,6 +116,7 @@ public class TitleScreenUI : MonoBehaviour
                     break;
             }
             outputs[i].GetComponentsInChildren<Text>().Where(text => text.name.Contains("Difficulty")).First().text = display;
+            outputs[i].GetComponentsInChildren<Text>().Where(text => text.name.Contains("Progress")).First().text = FileInfo.Progresses[i].ToString();
         }
 
         TitleScreen.enabled = true;
@@ -145,6 +146,7 @@ public class TitleScreenUI : MonoBehaviour
         OverwritePopup.enabled = false;
         ProfilePopup.enabled = false;
 
+        Game.Instance.FileNumber = SelectedProfile;
         Game.Instance.IsPlaying = true;
         Game.Instance.SceneManager.LoadSceneAsyncByName("Game");
     }
@@ -153,6 +155,7 @@ public class TitleScreenUI : MonoBehaviour
     {
         Game.Instance.Data = SaveSystem.LoadObject<DataSaver>($"SavePearlFile{SelectedProfile + 1}GameData.gme");
         Game.Instance.IsPlaying = true;
+        Game.Instance.FileNumber = SelectedProfile;
         Game.Instance.SceneManager.LoadSceneAsyncByName("Game");
     }
 
